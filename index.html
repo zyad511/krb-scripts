@@ -5,31 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KRB - مركز السكربتات | KSA Scripts</title>
     <meta name="description" content="KRB - ابحث وانسخ أفضل سكربتات Roblox من Rscripts و ScriptBlox">
-    <meta name="theme-color" content="#6c3ce0">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0a'/><text y='.75em' x='50%' text-anchor='middle' font-size='55' font-weight='bold' fill='white' font-family='Arial'>K</text></svg>">
 
     <style>
         :root {
-            --bg: #06060f;
-            --bg2: #0c0c1d;
-            --card: #13132b;
-            --card2: #181838;
-            --border: #252550;
-            --border2: #353570;
-            --text: #eaeaef;
-            --sub: #9090bb;
-            --sub2: #6a6a9a;
-            --accent: #7c3aed;
-            --accent2: #a855f7;
-            --gold: #f59e0b;
-            --gold2: #fbbf24;
-            --red: #ef4444;
+            --bg: #050508;
+            --bg2: #0a0a12;
+            --card: #111122;
+            --card2: #181835;
+            --border: #1e1e3a;
+            --border2: #2a2a50;
+            --text: #e8e8f0;
+            --sub: #8888b0;
+            --sub2: #5a5a80;
+            --accent: #ffffff;
+            --accent2: #cccccc;
+            --gold: #d4af37;
+            --gold2: #f0c860;
+            --red: #ff4444;
             --green: #22c55e;
-            --blue: #3b82f6;
-            --cyan: #06b6d4;
-            --pink: #ec4899;
-            --shadow: 0 8px 32px rgba(0,0,0,0.6);
-            --glow: 0 0 40px rgba(124,58,237,0.25);
+            --blue: #4ea8ff;
+            --cyan: #06d6d0;
+            --pink: #ff6b9d;
+            --shadow: 0 8px 40px rgba(0,0,0,0.7);
+            --glow-white: 0 0 30px rgba(255,255,255,0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,302 +41,287 @@
             min-height: 100vh;
             line-height: 1.7;
             background-image:
-                radial-gradient(ellipse at 20% 10%, rgba(124,58,237,0.07) 0%, transparent 55%),
-                radial-gradient(ellipse at 80% 90%, rgba(245,158,11,0.05) 0%, transparent 55%),
-                radial-gradient(ellipse at 50% 50%, rgba(59,130,246,0.04) 0%, transparent 60%);
+                radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.03) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 100%, rgba(212,175,55,0.04) 0%, transparent 50%);
+            display: flex;
         }
 
-        /* ========== SCROLLBAR ========== */
-        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent2); }
+
+        /* ========== SIDEBAR ========== */
+        .sidebar {
+            width: 260px;
+            min-height: 100vh;
+            background: rgba(10,10,18,0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-left: 1px solid var(--border);
+            padding: 1.5rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            flex-shrink: 0;
+        }
+        .sidebar-logo {
+            text-align: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .sidebar-logo svg {
+            width: 80px;
+            height: 80px;
+        }
+        .sidebar-logo .logo-text {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-top: 0.5rem;
+        }
+        .sidebar-logo .logo-sub {
+            font-size: 0.6rem;
+            color: var(--sub2);
+            letter-spacing: 4px;
+        }
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .sidebar-nav a {
+            color: var(--sub);
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+        }
+        .sidebar-footer {
+            margin-top: auto;
+            font-size: 0.7rem;
+            color: var(--sub2);
+            text-align: center;
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
 
         /* ========== HEADER ========== */
         header {
-            background: rgba(12,12,29,0.85);
+            background: rgba(10,10,18,0.85);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            padding: 0.8rem 1.5rem;
+            padding: 0.7rem 1.5rem;
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 99;
             border-bottom: 1px solid var(--border);
-            box-shadow: 0 4px 30px rgba(0,0,0,0.7);
         }
         .header-inner {
-            max-width: 1500px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            gap: 1rem;
             flex-wrap: wrap;
         }
-        .logo-wrap {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .logo-icon {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            box-shadow: 0 0 25px rgba(124,58,237,0.5);
-            animation: logoPulse 3s ease-in-out infinite;
-        }
-        @keyframes logoPulse {
-            0%, 100% { box-shadow: 0 0 25px rgba(124,58,237,0.5); }
-            50% { box-shadow: 0 0 45px rgba(168,85,247,0.7); }
-        }
-        .logo-text {
-            font-size: 1.9rem;
-            font-weight: 900;
-            letter-spacing: 1px;
-            background: linear-gradient(135deg, #c084fc, #a855f7, #7c3aed);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shine 3s linear infinite;
-        }
-        @keyframes shine {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
-        .logo-sub {
-            font-size: 0.65rem;
-            color: var(--sub2);
-            display: block;
-            letter-spacing: 2px;
-            margin-top: -2px;
-        }
-
         .search-wrap {
             flex: 1;
-            min-width: 220px;
+            min-width: 200px;
             position: relative;
         }
         .search-wrap input {
             width: 100%;
-            padding: 0.75rem 1rem 0.75rem 3rem;
+            padding: 0.7rem 1rem 0.7rem 2.8rem;
             border-radius: 30px;
-            border: 2px solid var(--border);
-            background: rgba(19,19,43,0.8);
+            border: 1.5px solid var(--border);
+            background: rgba(17,17,34,0.8);
             color: var(--text);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: all 0.35s;
-            backdrop-filter: blur(8px);
         }
         .search-wrap input:focus {
             outline: none;
             border-color: var(--accent2);
-            box-shadow: 0 0 0 5px rgba(124,58,237,0.12), 0 0 30px rgba(124,58,237,0.15);
-            background: rgba(19,19,43,0.95);
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.05), var(--glow-white);
         }
         .search-wrap input::placeholder { color: var(--sub2); }
         .search-icon {
             position: absolute;
-            right: 1.2rem;
+            right: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             pointer-events: none;
-            color: var(--sub);
-            transition: color 0.3s;
         }
-        .search-wrap input:focus ~ .search-icon { color: var(--accent2); }
 
         /* ========== TABS ========== */
-        .tabs { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+        .tabs { display: flex; gap: 0.3rem; flex-wrap: wrap; }
         .tab {
-            padding: 0.5rem 1.2rem;
+            padding: 0.45rem 1.1rem;
             border-radius: 25px;
             border: 1.5px solid var(--border);
             background: transparent;
             color: var(--sub);
             cursor: pointer;
-            font-size: 0.84rem;
+            font-size: 0.82rem;
             font-weight: 700;
             transition: all 0.3s;
             white-space: nowrap;
-            position: relative;
-            overflow: hidden;
         }
-        .tab::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            opacity: 0;
-            transition: opacity 0.3s;
-            border-radius: 25px;
-        }
-        .tab.active::before { opacity: 1; }
         .tab.active {
-            border-color: transparent;
-            color: #fff;
-            box-shadow: 0 0 25px rgba(124,58,237,0.4);
+            background: #fff;
+            border-color: #fff;
+            color: #000;
+            box-shadow: 0 0 25px rgba(255,255,255,0.2);
         }
         .tab:hover:not(.active) {
             border-color: var(--border2);
-            color: var(--text);
+            color: #fff;
         }
-        .tab span { position: relative; z-index: 1; }
 
-        /* ========== MAIN ========== */
+        /* ========== CONTAINER ========== */
         .container {
-            max-width: 1500px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 1.5rem;
         }
 
-        /* ========== HERO ========== */
         .hero {
             text-align: center;
-            padding: 2rem 1rem 1.5rem;
+            padding: 1.5rem 1rem 1rem;
         }
         .hero h1 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #c084fc, #a855f7, #f59e0b);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shine 4s linear infinite;
-            margin-bottom: 0.3rem;
+            color: #fff;
+            margin-bottom: 0.2rem;
         }
         .hero p {
             color: var(--sub);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         /* ========== FILTERS ========== */
         .filters-bar {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            gap: 0.4rem;
+            margin-bottom: 1.3rem;
             align-items: center;
-            padding: 0.8rem 1rem;
-            background: rgba(19,19,43,0.5);
+            padding: 0.7rem 1rem;
+            background: rgba(17,17,34,0.5);
             border-radius: 20px;
             border: 1px solid var(--border);
             backdrop-filter: blur(8px);
         }
         .filter-label {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: var(--sub);
             font-weight: 700;
             margin-left: 0.3rem;
-            white-space: nowrap;
         }
         .filter-chip {
-            padding: 0.4rem 0.9rem;
+            padding: 0.35rem 0.8rem;
             border-radius: 20px;
             border: 1.5px solid var(--border);
             background: var(--bg2);
             color: var(--sub);
             cursor: pointer;
-            font-size: 0.77rem;
+            font-size: 0.74rem;
             font-weight: 600;
             transition: all 0.25s;
             white-space: nowrap;
             user-select: none;
         }
         .filter-chip.active {
-            background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.2));
-            border-color: var(--accent2);
-            color: #fff;
-            box-shadow: 0 0 15px rgba(124,58,237,0.2);
+            background: #fff;
+            border-color: #fff;
+            color: #000;
+            box-shadow: 0 0 15px rgba(255,255,255,0.15);
         }
         .filter-chip:hover:not(.active) {
             border-color: var(--border2);
-            color: var(--text);
+            color: #fff;
         }
         .sort-select {
             margin-right: auto;
-            padding: 0.4rem 0.9rem;
+            padding: 0.35rem 0.8rem;
             border-radius: 20px;
             border: 1.5px solid var(--border);
             background: var(--bg2);
             color: var(--text);
-            font-size: 0.77rem;
+            font-size: 0.74rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.25s;
         }
-        .sort-select:hover { border-color: var(--border2); }
         .sort-select option { background: var(--bg2); color: var(--text); }
 
         /* ========== RESULTS ========== */
         .results-info {
             margin-bottom: 1rem;
-            font-size: 0.84rem;
+            font-size: 0.82rem;
             color: var(--sub);
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
         .results-info .count {
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            color: #fff;
-            padding: 3px 12px;
-            border-radius: 15px;
+            background: #fff;
+            color: #000;
+            padding: 2px 10px;
+            border-radius: 12px;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
         }
 
         /* ========== GRID ========== */
         .scripts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 1rem;
         }
 
         /* ========== CARD ========== */
         .card {
             background: var(--card);
-            border-radius: 18px;
+            border-radius: 16px;
             border: 1px solid var(--border);
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             display: flex;
             flex-direction: column;
             box-shadow: var(--shadow);
-            position: relative;
         }
-        .card::after {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 18px;
-            padding: 1px;
-            background: linear-gradient(135deg, var(--border2), transparent 50%, var(--border));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.4s;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .card:hover::after { opacity: 1; }
         .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 48px rgba(124,58,237,0.25), 0 0 60px rgba(124,58,237,0.08);
+            transform: translateY(-5px);
+            border-color: #fff;
+            box-shadow: 0 16px 48px rgba(255,255,255,0.1);
         }
 
         .card-img-wrap {
             position: relative;
             width: 100%;
-            height: 170px;
-            background: var(--bg);
+            height: 165px;
+            background: #000;
             overflow: hidden;
         }
         .card-img-wrap img {
@@ -346,65 +331,51 @@
             transition: transform 0.5s;
         }
         .card:hover .card-img-wrap img {
-            transform: scale(1.08);
+            transform: scale(1.06);
         }
 
         .card-badges {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 8px;
+            left: 8px;
             display: flex;
-            gap: 5px;
+            gap: 4px;
             flex-wrap: wrap;
             z-index: 2;
         }
         .badge {
-            padding: 4px 10px;
-            border-radius: 14px;
-            font-size: 0.68rem;
+            padding: 3px 9px;
+            border-radius: 12px;
+            font-size: 0.66rem;
             font-weight: 700;
             color: #fff;
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
-            letter-spacing: 0.3px;
         }
-        .badge-key { background: rgba(239,68,68,0.85); }
+        .badge-key { background: rgba(255,68,68,0.85); }
         .badge-free { background: rgba(34,197,94,0.85); }
-        .badge-paid { background: rgba(245,158,11,0.85); }
-        .badge-mobile { background: rgba(59,130,246,0.85); }
-        .badge-patched { background: rgba(148,163,184,0.8); }
-        .badge-universal { background: rgba(168,85,247,0.85); }
+        .badge-paid { background: rgba(212,175,55,0.85); }
+        .badge-mobile { background: rgba(78,168,255,0.85); }
+        .badge-patched { background: rgba(150,150,160,0.8); }
+        .badge-universal { background: rgba(200,200,200,0.8); color: #000; }
         .badge-source {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(6,6,15,0.85);
-            font-size: 0.64rem;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.8);
+            font-size: 0.62rem;
             z-index: 2;
-            backdrop-filter: blur(6px);
-        }
-        .badge-verified {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            background: rgba(59,130,246,0.88);
-            font-size: 0.64rem;
-            z-index: 2;
-            backdrop-filter: blur(6px);
         }
 
         .card-body {
-            padding: 1rem;
+            padding: 0.9rem;
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            position: relative;
-            z-index: 2;
-            background: var(--card);
+            gap: 0.4rem;
         }
         .card-title {
-            font-size: 0.97rem;
+            font-size: 0.93rem;
             font-weight: 700;
             color: #fff;
             display: -webkit-box;
@@ -414,16 +385,46 @@
             line-height: 1.5;
         }
         .card-desc {
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             color: var(--sub);
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
             flex: 1;
         }
+        .card-desc.translated {
+            color: #d4d4d4;
+            border-right: 2px solid var(--gold);
+            padding-right: 0.5rem;
+        }
+
+        .btn-translate {
+            font-size: 0.68rem;
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border2);
+            background: rgba(255,255,255,0.03);
+            color: var(--sub);
+            cursor: pointer;
+            transition: all 0.25s;
+            font-weight: 600;
+            align-self: flex-start;
+        }
+        .btn-translate:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: #fff;
+            color: #fff;
+        }
+        .btn-translate:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-translate.done {
+            background: rgba(34,197,94,0.15);
+            border-color: var(--green);
+            color: var(--green);
+        }
+
         .card-game {
-            font-size: 0.76rem;
+            font-size: 0.74rem;
             display: flex;
             align-items: center;
             gap: 0.3rem;
@@ -432,12 +433,8 @@
             color: var(--cyan);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.2s;
         }
-        .card-game a:hover {
-            color: var(--blue);
-            text-decoration: underline;
-        }
+        .card-game a:hover { text-decoration: underline; }
 
         .card-dev {
             display: flex;
@@ -447,71 +444,53 @@
             border-top: 1px solid var(--border);
         }
         .card-dev img {
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--border2);
-            transition: border-color 0.3s;
-        }
-        .card:hover .card-dev img {
-            border-color: var(--accent2);
         }
         .card-dev .dev-name {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
             color: var(--text);
         }
-        .dev-verified {
-            color: var(--blue);
-            margin-right: 2px;
-            font-size: 0.7rem;
-        }
+        .dev-verified { color: var(--blue); margin-right: 3px; }
 
         .card-stats {
             display: flex;
-            gap: 1rem;
-            font-size: 0.77rem;
+            gap: 0.8rem;
+            font-size: 0.75rem;
             color: var(--sub);
         }
-        .card-stats span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .card-stats .stat-views { color: var(--cyan); }
-        .card-stats .stat-likes { color: var(--pink); }
-        .card-stats .stat-dislikes { color: var(--sub2); }
+        .card-stats span { display: flex; align-items: center; gap: 3px; }
+        .stat-views { color: var(--cyan); }
+        .stat-likes { color: var(--pink); }
 
         .card-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 3px;
         }
         .tag {
-            font-size: 0.64rem;
-            padding: 3px 8px;
-            border-radius: 10px;
-            background: rgba(124,58,237,0.12);
-            color: var(--accent2);
-            border: 1px solid rgba(124,58,237,0.25);
-            transition: all 0.2s;
-        }
-        .tag:hover {
-            background: rgba(124,58,237,0.25);
-            border-color: var(--accent);
+            font-size: 0.62rem;
+            padding: 2px 7px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.04);
+            color: var(--sub2);
+            border: 1px solid var(--border);
         }
 
         .btn-copy {
             width: 100%;
-            padding: 0.7rem;
+            padding: 0.65rem;
             border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--accent), #6d28d9);
-            color: #fff;
+            border-radius: 10px;
+            background: #fff;
+            color: #000;
             font-weight: 700;
             cursor: pointer;
-            font-size: 0.86rem;
+            font-size: 0.84rem;
             transition: all 0.3s;
             display: flex;
             align-items: center;
@@ -519,80 +498,47 @@
             gap: 0.4rem;
             margin-top: auto;
             letter-spacing: 0.3px;
-            position: relative;
-            overflow: hidden;
         }
-        .btn-copy::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--accent2), var(--accent));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .btn-copy:hover::before { opacity: 1; }
         .btn-copy:hover {
-            box-shadow: 0 6px 25px rgba(124,58,237,0.45);
-            transform: translateY(-1px);
+            background: #e0e0e0;
+            box-shadow: 0 4px 20px rgba(255,255,255,0.2);
         }
-        .btn-copy:active { transform: scale(0.96); }
-        .btn-copy span { position: relative; z-index: 1; }
-        .btn-copy.copied { background: var(--green) !important; }
-        .btn-copy:disabled { opacity: 0.55; cursor: not-allowed; }
+        .btn-copy:active { transform: scale(0.97); }
+        .btn-copy.copied { background: var(--green) !important; color: #fff; }
+        .btn-copy:disabled { opacity: 0.5; cursor: not-allowed; }
 
         /* ========== LOAD MORE ========== */
-        .load-more-wrap {
-            text-align: center;
-            margin: 2.5rem 0;
-        }
+        .load-more-wrap { text-align: center; margin: 2rem 0; }
         .btn-load-more {
-            padding: 0.8rem 2.8rem;
+            padding: 0.7rem 2.5rem;
             border-radius: 30px;
-            border: 2px solid var(--accent2);
+            border: 2px solid #fff;
             background: transparent;
-            color: var(--accent2);
+            color: #fff;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             cursor: pointer;
             transition: all 0.35s;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 0.5px;
         }
-        .btn-load-more::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            opacity: 0;
-            transition: opacity 0.35s;
-            border-radius: 30px;
-        }
-        .btn-load-more:hover::before { opacity: 1; }
         .btn-load-more:hover {
-            color: #fff;
-            border-color: transparent;
-            box-shadow: 0 4px 25px rgba(124,58,237,0.4);
+            background: #fff;
+            color: #000;
+            box-shadow: 0 4px 25px rgba(255,255,255,0.25);
         }
-        .btn-load-more:disabled {
-            opacity: 0.35;
-            cursor: not-allowed;
-            border-color: var(--border);
-        }
-        .btn-load-more span { position: relative; z-index: 1; }
+        .btn-load-more:disabled { opacity: 0.3; cursor: not-allowed; }
 
         /* ========== SKELETON ========== */
         .skeleton {
             background: linear-gradient(90deg, var(--card) 25%, var(--border) 50%, var(--card) 75%);
             background-size: 200% 100%;
             animation: shimmer 1.5s infinite;
-            border-radius: 18px;
+            border-radius: 16px;
         }
         @keyframes shimmer {
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
-        .skel-card { height: 390px; }
+        .skel-card { height: 400px; }
 
         /* ========== TOAST ========== */
         .toast-container {
@@ -607,175 +553,174 @@
             align-items: center;
         }
         .toast {
-            background: var(--card2);
-            color: #fff;
-            padding: 0.7rem 1.5rem;
+            background: #fff;
+            color: #000;
+            padding: 0.6rem 1.4rem;
             border-radius: 30px;
-            border: 1px solid var(--border2);
             box-shadow: 0 8px 30px rgba(0,0,0,0.6);
             animation: toastIn 0.35s ease;
-            font-size: 0.84rem;
-            font-weight: 600;
-            backdrop-filter: blur(12px);
+            font-size: 0.82rem;
+            font-weight: 700;
         }
         @keyframes toastIn {
-            from { opacity: 0; transform: translateY(15px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ========== FOOTER ========== */
         footer {
             text-align: center;
             padding: 2rem;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--sub2);
             border-top: 1px solid var(--border);
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
-        footer a {
-            color: var(--accent2);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-        footer a:hover { color: var(--gold); text-decoration: underline; }
+        footer a { color: var(--accent2); text-decoration: none; }
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 900px) {
-            .scripts-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-            .card-img-wrap { height: 145px; }
-            .hero h1 { font-size: 1.7rem; }
+            .sidebar { display: none; }
+            .scripts-grid { grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
         }
-        @media (max-width: 680px) {
-            .header-inner { flex-direction: column; align-items: stretch; }
-            .search-wrap { min-width: auto; }
+        @media (max-width: 600px) {
             .scripts-grid { grid-template-columns: 1fr; }
+            .header-inner { flex-direction: column; }
             .tabs { justify-content: center; }
             .filters-bar { justify-content: center; }
             .sort-select { margin-right: 0; }
-            .hero { padding: 1rem 0.5rem; }
-            .hero h1 { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ==================== HEADER ==================== -->
-    <header>
-        <div class="header-inner">
-            <div class="logo-wrap">
-                <div class="logo-icon">💎</div>
-                <div>
-                    <div class="logo-text">KRB</div>
-                    <span class="logo-sub">SCRIPTS HUB</span>
-                </div>
-            </div>
-            <div class="search-wrap">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="searchInput" placeholder="ابحث عن سكربت... (يدعم العربية)" autocomplete="off">
-            </div>
-            <div class="tabs" id="sourceTabs">
-                <button class="tab active" data-source="all"><span>🌐 الكل</span></button>
-                <button class="tab" data-source="rscripts"><span>📜 Rscripts</span></button>
-                <button class="tab" data-source="bloxscript"><span>📦 ScriptBlox</span></button>
-            </div>
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <svg viewBox="0 0 100 100" width="80" height="80">
+                <defs>
+                    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#fff"/>
+                        <stop offset="100%" style="stop-color:#999"/>
+                    </linearGradient>
+                </defs>
+                <rect width="100" height="100" rx="22" fill="#0a0a0a" stroke="url(#g1)" stroke-width="3"/>
+                <text x="50" y="68" text-anchor="middle" font-size="50" font-weight="900" fill="url(#g1)" font-family="Arial, sans-serif">K</text>
+                <circle cx="78" cy="22" r="8" fill="#fff"/>
+            </svg>
+            <div class="logo-text">KRB</div>
+            <div class="logo-sub">SCRIPTS HUB</div>
         </div>
-    </header>
+        <nav class="sidebar-nav">
+            <a href="#" class="active">🏠 الرئيسية</a>
+            <a href="#">🔥 الأكثر تداولاً</a>
+            <a href="#">🆕 الأحدث</a>
+            <a href="#">⭐ المفضلة</a>
+        </nav>
+        <div class="sidebar-footer">
+            <p>Powered by</p>
+            <p>Rscripts & ScriptBlox</p>
+            <p style="margin-top:0.5rem;">© 2025 KRB</p>
+        </div>
+    </aside>
 
     <!-- ==================== MAIN ==================== -->
-    <div class="container">
-        <!-- Hero -->
-        <div class="hero">
-            <h1>🔮 مركز السكربتات الأول</h1>
-            <p>ابحث وانسخ أفضل سكربتات Roblox من Rscripts و ScriptBlox</p>
-        </div>
+    <div class="main-content">
+        <header>
+            <div class="header-inner">
+                <div class="search-wrap">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="ابحث عن سكربت... (يدعم العربية)" autocomplete="off">
+                </div>
+                <div class="tabs" id="sourceTabs">
+                    <button class="tab active" data-source="all">🌐 الكل</button>
+                    <button class="tab" data-source="rscripts">📜 Rscripts</button>
+                    <button class="tab" data-source="bloxscript">📦 ScriptBlox</button>
+                </div>
+            </div>
+        </header>
 
-        <!-- Filters -->
-        <div class="filters-bar" id="filtersBar">
-            <span class="filter-label">🎯 فلترة:</span>
-            <button class="filter-chip active" data-filter="all">✨ الكل</button>
-            <button class="filter-chip" data-filter="free">🆓 مجاني</button>
-            <button class="filter-chip" data-filter="paid">💎 مدفوع</button>
-            <button class="filter-chip" data-filter="nokey">🔓 بدون مفتاح</button>
-            <button class="filter-chip" data-filter="key">🔑 بمفتاح</button>
-            <button class="filter-chip" data-filter="verified">☑️ موثق</button>
-            <button class="filter-chip" data-filter="mobile">📱 جوال</button>
-            <button class="filter-chip" data-filter="unpatched">🟢 يعمل</button>
-            <select class="sort-select" id="sortSelect">
-                <option value="default">🔥 الأكثر تداولاً</option>
-                <option value="newest">📅 الأحدث</option>
-                <option value="views">👁️ الأكثر مشاهدة</option>
-                <option value="likes">❤️ الأكثر إعجاباً</option>
-            </select>
-        </div>
+        <div class="container">
+            <div class="hero">
+                <h1>مركز السكربتات</h1>
+                <p>ابحث وانسخ أفضل سكربتات Roblox مع ترجمة فورية</p>
+            </div>
 
-        <!-- Results -->
-        <div class="results-info" id="resultsInfo">
-            ⏳ جاري تحميل السكربتات...
-        </div>
+            <div class="filters-bar" id="filtersBar">
+                <span class="filter-label">🎯</span>
+                <button class="filter-chip active" data-filter="all">✨ الكل</button>
+                <button class="filter-chip" data-filter="free">🆓 مجاني</button>
+                <button class="filter-chip" data-filter="nokey">🔓 بدون مفتاح</button>
+                <button class="filter-chip" data-filter="key">🔑 بمفتاح</button>
+                <button class="filter-chip" data-filter="verified">☑️ موثق</button>
+                <button class="filter-chip" data-filter="mobile">📱 جوال</button>
+                <button class="filter-chip" data-filter="unpatched">🟢 يعمل</button>
+                <select class="sort-select" id="sortSelect">
+                    <option value="default">🔥 الأكثر تداولاً</option>
+                    <option value="newest">📅 الأحدث</option>
+                    <option value="views">👁️ الأكثر مشاهدة</option>
+                    <option value="likes">❤️ الأكثر إعجاباً</option>
+                </select>
+            </div>
 
-        <!-- Grid -->
-        <div class="scripts-grid" id="scriptsGrid">
-            <div class="skeleton skel-card"></div>
-            <div class="skeleton skel-card"></div>
-            <div class="skeleton skel-card"></div>
-            <div class="skeleton skel-card"></div>
-            <div class="skeleton skel-card"></div>
-            <div class="skeleton skel-card"></div>
-        </div>
+            <div class="results-info" id="resultsInfo">⏳ جاري التحميل...</div>
 
-        <!-- Load More -->
-        <div class="load-more-wrap">
-            <button class="btn-load-more" id="btnLoadMore" style="display:none;">
-                <span>📥 تحميل المزيد...</span>
-            </button>
+            <div class="scripts-grid" id="scriptsGrid">
+                <div class="skeleton skel-card"></div><div class="skeleton skel-card"></div>
+                <div class="skeleton skel-card"></div><div class="skeleton skel-card"></div>
+                <div class="skeleton skel-card"></div><div class="skeleton skel-card"></div>
+            </div>
+
+            <div class="load-more-wrap">
+                <button class="btn-load-more" id="btnLoadMore" style="display:none;">📥 تحميل المزيد...</button>
+            </div>
+
+            <footer>
+                <p><strong>KRB</strong> — Powered by Rscripts & ScriptBlox | © 2025</p>
+            </footer>
         </div>
     </div>
 
-    <!-- ==================== FOOTER ==================== -->
-    <footer>
-        <p><strong style="color:#c084fc;">KRB</strong> - مركز السكربتات | Powered by 
-           <a href="https://scriptblox.com" target="_blank" rel="noopener">ScriptBlox.com</a> &amp; 
-           <a href="https://rscripts.net" target="_blank" rel="noopener">Rscripts.net</a>
-        </p>
-        <p style="margin-top:0.5rem;font-size:0.7rem;">© 2025 KRB Scripts Hub - جميع الحقوق محفوظة</p>
-    </footer>
-
-    <!-- Toast -->
     <div class="toast-container" id="toastContainer"></div>
 
-    <!-- ==================== SCRIPTS ENGINE ==================== -->
+    <!-- ==================== ENGINE ==================== -->
     <script>
     (function() {
-        // ============ STATE ============
         const state = {
-            source: 'all',
-            filter: 'all',
-            sort: 'default',
-            search: '',
+            source: 'all', filter: 'all', sort: 'default', search: '',
             page: { rscripts: 1, bloxscript: 1 },
             maxPages: { rscripts: 1, bloxscript: 1 },
             isLoading: false,
             hasMore: { rscripts: true, bloxscript: true },
-            allScripts: [],
-            searchTimer: null,
-            scriptsCache: {}
+            allScripts: [], searchTimer: null,
+            scriptsCache: {}, translateCache: {}
         };
 
-        // ============ DOM ============
         const $grid = document.getElementById('scriptsGrid');
         const $search = document.getElementById('searchInput');
         const $resultsInfo = document.getElementById('resultsInfo');
         const $btnLoadMore = document.getElementById('btnLoadMore');
         const $toastContainer = document.getElementById('toastContainer');
 
-        // ============ API ============
-        const API = {
-            rscripts: 'https://rscripts.net/api/v2',
-            bloxscript: 'https://scriptblox.com/api'
-        };
+        const API = { rscripts: 'https://rscripts.net/api/v2', bloxscript: 'https://scriptblox.com/api' };
 
-        // ============ URL BUILDERS ============
+        // CORS Proxy for Rscripts raw scripts
+        const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+
+        async function translateText(text, targetLang = 'ar') {
+            if (!text || text.length < 3) return text;
+            const cacheKey = `tr_${text.substring(0, 50)}`;
+            if (state.translateCache[cacheKey]) return state.translateCache[cacheKey];
+            try {
+                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Translate failed');
+                const data = await res.json();
+                let translated = data?.[0]?.map(p => p[0]).join('') || text;
+                if (translated !== text) state.translateCache[cacheKey] = translated;
+                return translated;
+            } catch { return text; }
+        }
+
         function buildRscriptsURL(isTrending) {
             if (isTrending && !state.search) return `${API.rscripts}/trending`;
             const p = new URLSearchParams();
@@ -806,7 +751,6 @@
             else if (state.sort === 'views') { p.set('sortBy', 'views'); p.set('order', 'desc'); }
             else if (state.sort === 'likes') { p.set('sortBy', 'likeCount'); p.set('order', 'desc'); }
             if (state.filter === 'free') p.set('mode', 'free');
-            if (state.filter === 'paid') p.set('mode', 'paid');
             if (state.filter === 'nokey') p.set('key', '0');
             if (state.filter === 'key') p.set('key', '1');
             if (state.filter === 'verified') p.set('verified', '1');
@@ -814,195 +758,148 @@
             return `${API.bloxscript}${endpoint}?${p.toString()}`;
         }
 
-        // ============ FETCHERS ============
         async function fetchRscripts(isTrending) {
             try {
                 const url = buildRscriptsURL(isTrending);
                 const res = await fetch(url);
-                if (!res.ok) throw new Error(`Rscripts Status ${res.status}`);
+                if (!res.ok) throw new Error(`Status ${res.status}`);
                 const data = await res.json();
                 let scripts = [];
-
                 if (isTrending && !state.search) {
-                    // Trending response
                     if (data.success && Array.isArray(data.success)) scripts = data.success;
                     else if (Array.isArray(data)) scripts = data;
                 } else {
-                    // Scripts list
                     if (data.scripts && Array.isArray(data.scripts)) scripts = data.scripts;
                 }
-
                 state.maxPages.rscripts = data.info?.maxPages || 1;
                 state.hasMore.rscripts = state.page.rscripts < state.maxPages.rscripts;
-
-                return scripts.map(s => normalizeRscript(s));
-            } catch (e) {
-                console.error('Rscripts fetch error:', e.message);
-                return [];
-            }
+                return scripts.map(normalizeRscript);
+            } catch (e) { console.error('Rscripts:', e); return []; }
         }
 
         async function fetchBloxscript(isTrending) {
             try {
                 const url = buildBloxscriptURL(isTrending);
                 const res = await fetch(url);
-                if (!res.ok) throw new Error(`Bloxscript Status ${res.status}`);
+                if (!res.ok) throw new Error(`Status ${res.status}`);
                 const data = await res.json();
                 const scripts = data.result?.scripts || [];
                 state.maxPages.bloxscript = data.result?.totalPages || 1;
                 state.hasMore.bloxscript = state.page.bloxscript < state.maxPages.bloxscript;
-                return scripts.map(s => normalizeBloxscript(s));
-            } catch (e) {
-                console.error('Bloxscript fetch error:', e.message);
-                return [];
-            }
+                return scripts.map(normalizeBloxscript);
+            } catch (e) { console.error('Bloxscript:', e); return []; }
         }
 
-        // ============ NORMALIZERS ============
         function normalizeRscript(s) {
             const hasUser = s.user && Object.keys(s.user).length > 0;
             return {
-                id: s._id || s.id || '',
-                title: s.title || 'بدون عنوان',
+                id: s._id || '', title: s.title || 'بدون عنوان',
                 description: (s.description || '').trim(),
                 image: s.image || s.game?.imgurl || '',
                 dev: hasUser ? (s.user.username || '') : (s.creator || 'مجهول'),
                 devImg: hasUser ? (s.user.image || '') : '',
                 devVerified: hasUser ? (s.user.verified || false) : false,
-                views: s.views || 0,
-                likes: s.likes || 0,
-                dislikes: s.dislikes || 0,
-                hasKey: s.keySystem || false,
-                isPaid: s.paid || false,
-                isMobile: s.mobileReady || false,
-                isPatched: false,
-                isUniversal: false,
+                views: s.views || 0, likes: s.likes || 0, dislikes: s.dislikes || 0,
+                hasKey: s.keySystem || false, isPaid: s.paid || false,
+                isMobile: s.mobileReady || false, isPatched: false, isUniversal: false,
                 gameName: s.game?.title || '',
                 gameId: s.game?.placeId || null,
                 gameLink: s.game?.gameLink || (s.game?.placeId ? `https://www.roblox.com/games/${s.game.placeId}` : '#'),
-                codeUrl: s.rawScript || null,
-                code: null,
-                tags: [],
-                source: 'rscripts',
-                slug: s._id || s.id || ''
+                codeUrl: s.rawScript || null, code: null,
+                tags: [], source: 'rscripts', slug: s._id || ''
             };
         }
 
         function normalizeBloxscript(s) {
             return {
-                id: s._id || '',
-                title: s.title || 'بدون عنوان',
+                id: s._id || '', title: s.title || 'بدون عنوان',
                 description: (s.features || '').trim(),
                 image: s.image || s.game?.imageUrl || '',
                 dev: s.owner?.username || 'مجهول',
                 devImg: s.owner?.profilePicture || '',
                 devVerified: s.owner?.verified || s.verified || false,
-                views: s.views || 0,
-                likes: s.likeCount || 0,
-                dislikes: s.dislikeCount || 0,
-                hasKey: s.key || false,
-                isPaid: s.scriptType === 'paid',
-                isMobile: false,
-                isPatched: s.isPatched || false,
-                isUniversal: s.isUniversal || false,
+                views: s.views || 0, likes: s.likeCount || 0, dislikes: s.dislikeCount || 0,
+                hasKey: s.key || false, isPaid: s.scriptType === 'paid',
+                isMobile: false, isPatched: s.isPatched || false, isUniversal: s.isUniversal || false,
                 gameName: s.game?.name || '',
                 gameId: s.game?.gameId || null,
                 gameLink: s.game?.gameId ? `https://www.roblox.com/games/${s.game.gameId}` : '#',
-                codeUrl: null,
-                code: s.script || null,
+                codeUrl: null, code: s.script || null,
                 tags: Array.isArray(s.tags) ? s.tags : [],
-                source: 'bloxscript',
-                slug: s.slug || s._id || ''
+                source: 'bloxscript', slug: s.slug || s._id || ''
             };
         }
 
-        // ============ GET CODE ============
         async function getCode(script) {
-            const cacheKey = `${script.source}_${script.id}`;
+            const cacheKey = `code_${script.source}_${script.id}`;
             if (state.scriptsCache[cacheKey]) return state.scriptsCache[cacheKey];
+            if (script.code) { state.scriptsCache[cacheKey] = script.code; return script.code; }
 
-            // If we already have code
-            if (script.code) {
-                state.scriptsCache[cacheKey] = script.code;
-                return script.code;
-            }
-
-            // Rscripts: fetch from rawScript URL
             if (script.source === 'rscripts' && script.codeUrl) {
+                // Try direct first
                 try {
                     const r = await fetch(script.codeUrl);
-                    if (r.ok) {
-                        const txt = await r.text();
-                        state.scriptsCache[cacheKey] = txt;
-                        return txt;
-                    }
+                    if (r.ok) { const txt = await r.text(); state.scriptsCache[cacheKey] = txt; return txt; }
+                } catch {}
+                // Try CORS proxy
+                try {
+                    const r = await fetch(CORS_PROXY + encodeURIComponent(script.codeUrl));
+                    if (r.ok) { const txt = await r.text(); state.scriptsCache[cacheKey] = txt; return txt; }
                 } catch {}
             }
 
-            // Bloxscript: try raw endpoint
             if (script.source === 'bloxscript') {
                 try {
                     const r = await fetch(`${API.bloxscript}/script/raw/${script.id}`);
-                    if (r.ok) {
-                        const txt = await r.text();
-                        state.scriptsCache[cacheKey] = txt;
-                        return txt;
-                    }
+                    if (r.ok) { const txt = await r.text(); state.scriptsCache[cacheKey] = txt; return txt; }
                 } catch {}
             }
-
             return null;
         }
 
-        // ============ MAIN ============
         async function loadScripts(reset = true) {
             if (state.isLoading) return;
             state.isLoading = true;
-
             if (reset) {
-                state.page.rscripts = 1;
-                state.page.bloxscript = 1;
-                state.hasMore.rscripts = true;
-                state.hasMore.bloxscript = true;
+                state.page.rscripts = 1; state.page.bloxscript = 1;
+                state.hasMore.rscripts = true; state.hasMore.bloxscript = true;
                 state.allScripts = [];
-                $grid.innerHTML = Array(6).fill(0).map(() => '<div class="skeleton skel-card"></div>').join('');
+                $grid.innerHTML = Array(6).fill('<div class="skeleton skel-card"></div>').join('');
                 $btnLoadMore.style.display = 'none';
             }
-
             $btnLoadMore.disabled = true;
             const isTrending = state.sort === 'default' && !state.search;
             let scripts = [];
-
-            // Fetch from both sources in parallel
             const promises = [];
-            if (state.source === 'all' || state.source === 'rscripts') {
-                promises.push(fetchRscripts(isTrending).then(s => ({ source: 'rscripts', data: s })));
-            }
-            if (state.source === 'all' || state.source === 'bloxscript') {
-                promises.push(fetchBloxscript(isTrending).then(s => ({ source: 'bloxscript', data: s })));
+            if (state.source === 'all' || state.source === 'rscripts')
+                promises.push(fetchRscripts(isTrending).then(d => scripts.push(...d)));
+            if (state.source === 'all' || state.source === 'bloxscript')
+                promises.push(fetchBloxscript(isTrending).then(d => scripts.push(...d)));
+            await Promise.allSettled(promises);
+
+            // Apply local filters for combined mode
+            if (state.filter !== 'all') {
+                scripts = scripts.filter(s => {
+                    switch(state.filter) {
+                        case 'free': return !s.isPaid && !s.hasKey;
+                        case 'nokey': return !s.hasKey;
+                        case 'key': return s.hasKey;
+                        case 'verified': return s.devVerified;
+                        case 'mobile': return s.isMobile;
+                        case 'unpatched': return !s.isPatched;
+                        default: return true;
+                    }
+                });
             }
 
-            const results = await Promise.allSettled(promises);
-            for (const r of results) {
-                if (r.status === 'fulfilled') {
-                    scripts = [...scripts, ...r.value.data];
-                }
-            }
-
-            // Local sort for combined sources
-            if (state.source === 'all' && state.sort === 'views') {
-                scripts.sort((a, b) => b.views - a.views);
-            } else if (state.source === 'all' && state.sort === 'likes') {
-                scripts.sort((a, b) => b.likes - a.likes);
-            }
+            if (state.sort === 'views') scripts.sort((a,b) => b.views - a.views);
+            else if (state.sort === 'likes') scripts.sort((a,b) => b.likes - a.likes);
 
             state.allScripts = reset ? scripts : [...state.allScripts, ...scripts];
             render(state.allScripts);
-
             const hasMore = state.source === 'all'
                 ? (state.hasMore.rscripts || state.hasMore.bloxscript)
                 : (state.source === 'rscripts' ? state.hasMore.rscripts : state.hasMore.bloxscript);
-
             $btnLoadMore.style.display = hasMore ? 'inline-block' : 'none';
             $btnLoadMore.disabled = false;
             $resultsInfo.innerHTML = `✅ تم العثور على <span class="count">${state.allScripts.length}</span> سكربت`;
@@ -1013,181 +910,117 @@
             if (state.source === 'all') {
                 if (state.hasMore.rscripts) state.page.rscripts++;
                 if (state.hasMore.bloxscript) state.page.bloxscript++;
-            } else if (state.source === 'rscripts') {
-                state.page.rscripts++;
-            } else {
-                state.page.bloxscript++;
-            }
+            } else if (state.source === 'rscripts') state.page.rscripts++;
+            else state.page.bloxscript++;
             loadScripts(false);
         }
 
-        // ============ RENDER ============
         function render(scripts) {
             if (!scripts.length) {
-                $grid.innerHTML = `
-                <div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--sub);">
-                    <div style="font-size:3.5rem;margin-bottom:1rem;">🔍</div>
-                    <p style="font-size:1.1rem;font-weight:600;">لا توجد نتائج</p>
-                    <p style="font-size:0.85rem;margin-top:0.3rem;">جرب تغيير الفلاتر أو كلمة البحث</p>
-                </div>`;
+                $grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--sub);"><div style="font-size:3rem;">🔍</div><p>لا توجد نتائج</p></div>`;
                 return;
             }
-
             $grid.innerHTML = scripts.map(s => {
-                const imgSrc = s.image || '';
-                const devImgSrc = s.devImg || '';
-                const desc = s.description ? s.description.substring(0, 150) : '';
-                const gameName = s.gameName || '';
-                const gameLink = s.gameLink || '#';
-                const tagsHtml = s.tags.slice(0, 4).map(t => `<span class="tag">#${escHtml(t)}</span>`).join('');
-
-                const badgesHtml = [
+                const desc = s.description?.substring(0, 200) || '';
+                const hasDesc = desc.length > 10;
+                const isEnglish = /^[a-zA-Z]/.test(desc);
+                const translateBtn = hasDesc && isEnglish
+                    ? `<button class="btn-translate" data-id="${esc(s.id)}" data-source="${s.source}" onclick="window._krbTranslate(this)">🌐 ترجمة</button>` : '';
+                const badges = [
                     s.hasKey ? '<span class="badge badge-key">🔑 مفتاح</span>' : '<span class="badge badge-free">✅ مفتوح</span>',
                     s.isPaid ? '<span class="badge badge-paid">💎 مدفوع</span>' : '',
                     s.isMobile ? '<span class="badge badge-mobile">📱 جوال</span>' : '',
                     s.isPatched ? '<span class="badge badge-patched">🚫 متوقف</span>' : '',
-                    s.isUniversal ? '<span class="badge badge-universal">🌐 شامل</span>' : '',
                 ].filter(Boolean).join('');
-
-                const devNameHtml = s.devVerified
-                    ? `<span class="dev-verified">✅</span>${escHtml(s.dev)}`
-                    : escHtml(s.dev);
-
-                const statsHtml = [
-                    `<span class="stat-views">👁️ ${fmtNum(s.views)}</span>`,
-                    `<span class="stat-likes">❤️ ${fmtNum(s.likes)}</span>`,
-                    s.dislikes > 0 ? `<span class="stat-dislikes">👎 ${fmtNum(s.dislikes)}</span>` : '',
-                ].filter(Boolean).join('');
-
-                const sourceLabel = s.source === 'rscripts' ? '📜 Rscripts' : '📦 ScriptBlox';
-
+                const devName = s.devVerified ? `<span class="dev-verified">✅</span>${esc(s.dev)}` : esc(s.dev);
                 return `
-                <div class="card" data-id="${escHtml(s.id)}" data-source="${s.source}">
+                <div class="card">
                     <div class="card-img-wrap">
-                        ${imgSrc ? `<img src="${escHtml(imgSrc)}" alt="${escHtml(s.title)}" loading="lazy" onerror="this.parentElement.style.background='var(--bg)';this.style.display='none';">` : ''}
-                        <div class="card-badges">${badgesHtml}</div>
-                        <span class="badge badge-source">${sourceLabel}</span>
-                        ${s.devVerified ? '<span class="badge badge-verified">☑️ مطور موثق</span>' : ''}
+                        ${s.image ? `<img src="${esc(s.image)}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}
+                        <div class="card-badges">${badges}</div>
+                        <span class="badge badge-source">${s.source==='rscripts'?'📜 Rscripts':'📦 ScriptBlox'}</span>
                     </div>
                     <div class="card-body">
-                        <div class="card-title">${escHtml(s.title)}</div>
-                        ${desc ? `<div class="card-desc">${escHtml(desc)}</div>` : ''}
-                        ${gameName ? `<div class="card-game">🎮 <a href="${escHtml(gameLink)}" target="_blank" rel="noopener">${escHtml(gameName)}</a></div>` : ''}
-                        ${tagsHtml ? `<div class="card-tags">${tagsHtml}</div>` : ''}
+                        <div class="card-title">${esc(s.title)}</div>
+                        ${hasDesc ? `<div class="card-desc" data-original="${esc(desc)}">${esc(desc)}</div>` : ''}
+                        ${translateBtn}
+                        ${s.gameName ? `<div class="card-game">🎮 <a href="${esc(s.gameLink)}" target="_blank">${esc(s.gameName)}</a></div>` : ''}
+                        ${s.tags.length ? `<div class="card-tags">${s.tags.slice(0,4).map(t=>`<span class="tag">#${esc(t)}</span>`).join('')}</div>` : ''}
                         <div class="card-dev">
-                            ${devImgSrc ? `<img src="${escHtml(devImgSrc)}" alt="${escHtml(s.dev)}" loading="lazy" onerror="this.style.display='none';">` : '<img src="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>" alt="User">'}
-                            <span class="dev-name">${devNameHtml}</span>
+                            ${s.devImg ? `<img src="${esc(s.devImg)}" onerror="this.style.display='none'">` : ''}
+                            <span class="dev-name">${devName}</span>
                         </div>
-                        <div class="card-stats">${statsHtml}</div>
-                        <button class="btn-copy" data-id="${escHtml(s.id)}" data-source="${s.source}" onclick="window._krbCopy(this)">
-                            <span>📋 نسخ السكربت</span>
-                        </button>
+                        <div class="card-stats">
+                            <span class="stat-views">👁️ ${fmt(s.views)}</span>
+                            <span class="stat-likes">❤️ ${fmt(s.likes)}</span>
+                        </div>
+                        <button class="btn-copy" data-id="${esc(s.id)}" data-source="${s.source}" onclick="window._krbCopy(this)">📋 نسخ السكربت</button>
                     </div>
                 </div>`;
             }).join('');
         }
 
-        // ============ COPY ============
-        window._krbCopy = async function(btn) {
+        window._krbTranslate = async function(btn) {
             if (btn.disabled) return;
-            const id = btn.dataset.id;
-            const source = btn.dataset.source;
-            const origHTML = btn.innerHTML;
-            btn.innerHTML = '<span>⏳ جاري التحميل...</span>';
-            btn.disabled = true;
-
-            const script = state.allScripts.find(s => s.id === id && s.source === source);
-            if (!script) {
-                btn.innerHTML = origHTML;
-                btn.disabled = false;
-                return;
-            }
-
-            const code = await getCode(script);
-            if (code) {
-                try {
-                    await navigator.clipboard.writeText(code);
-                    btn.innerHTML = '<span>✅ تم النسخ!</span>';
-                    btn.classList.add('copied');
-                    showToast('✅ تم نسخ كود السكربت بنجاح!');
-                } catch {
-                    btn.innerHTML = '<span>❌ فشل النسخ</span>';
-                    showToast('❌ تعذر الوصول للحافظة');
-                }
-            } else {
-                btn.innerHTML = '<span>❌ لم يتم العثور على الكود</span>';
-                showToast('❌ تعذر تحميل كود السكربت');
-            }
-
+            const descEl = btn.parentElement.querySelector('.card-desc');
+            if (!descEl) return;
+            const original = descEl.dataset.original;
+            btn.innerHTML = '⏳...'; btn.disabled = true;
+            const translated = await translateText(original);
+            if (translated !== original) {
+                descEl.textContent = translated;
+                descEl.classList.add('translated');
+                btn.innerHTML = '✅ تمت';
+                btn.classList.add('done');
+            } else { btn.innerHTML = '⚠️ فشل'; }
             setTimeout(() => {
-                btn.innerHTML = origHTML;
-                btn.classList.remove('copied');
+                btn.innerHTML = btn.classList.contains('done') ? '🔄 إعادة' : '🌐 ترجمة';
                 btn.disabled = false;
-            }, 2200);
+            }, 2000);
         };
 
-        // ============ HELPERS ============
-        function escHtml(str) {
-            if (!str) return '';
-            const d = document.createElement('div');
-            d.textContent = str;
-            return d.innerHTML;
-        }
+        window._krbCopy = async function(btn) {
+            if (btn.disabled) return;
+            const id = btn.dataset.id, source = btn.dataset.source;
+            const orig = btn.innerHTML;
+            btn.innerHTML = '⏳...'; btn.disabled = true;
+            const script = state.allScripts.find(s => s.id === id && s.source === source);
+            if (!script) { btn.innerHTML = orig; btn.disabled = false; return; }
+            const code = await getCode(script);
+            if (code) {
+                try { await navigator.clipboard.writeText(code); btn.innerHTML = '✅ تم النسخ!'; btn.classList.add('copied'); toast('✅ تم نسخ السكربت!'); }
+                catch { btn.innerHTML = '❌ فشل'; toast('❌ تعذر النسخ'); }
+            } else { btn.innerHTML = '❌ لا يوجد كود'; toast('❌ تعذر تحميل الكود'); }
+            setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copied'); btn.disabled = false; }, 2000);
+        };
 
-        function fmtNum(n) {
-            if (!n || n === 0) return '0';
-            if (n >= 1e6) return (n / 1e6).toFixed(1) + 'M';
-            if (n >= 1e3) return (n / 1e3).toFixed(1) + 'K';
-            return n.toLocaleString('en');
-        }
-
-        function showToast(msg) {
-            const t = document.createElement('div');
-            t.className = 'toast';
-            t.textContent = msg;
+        function esc(s) { if(!s)return''; const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+        function fmt(n) { if(!n)return'0'; if(n>=1e6)return (n/1e6).toFixed(1)+'M'; if(n>=1e3)return (n/1e3).toFixed(1)+'K'; return n.toLocaleString('en'); }
+        function toast(m) {
+            const t=document.createElement('div'); t.className='toast'; t.textContent=m;
             $toastContainer.appendChild(t);
-            setTimeout(() => {
-                t.style.opacity = '0';
-                t.style.transition = 'opacity 0.3s';
-                setTimeout(() => t.remove(), 300);
-            }, 2300);
+            setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity 0.3s';setTimeout(()=>t.remove(),300);},2000);
         }
 
-        // ============ EVENTS ============
         document.getElementById('sourceTabs').addEventListener('click', e => {
-            const tab = e.target.closest('.tab');
-            if (!tab) return;
-            document.querySelectorAll('#sourceTabs .tab').forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            state.source = tab.dataset.source;
-            loadScripts(true);
+            const tab = e.target.closest('.tab'); if(!tab)return;
+            document.querySelectorAll('#sourceTabs .tab').forEach(t=>t.classList.remove('active'));
+            tab.classList.add('active'); state.source = tab.dataset.source; loadScripts(true);
         });
-
         document.getElementById('filtersBar').addEventListener('click', e => {
-            const chip = e.target.closest('.filter-chip');
-            if (!chip) return;
-            document.querySelectorAll('#filtersBar .filter-chip').forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-            state.filter = chip.dataset.filter;
+            const chip = e.target.closest('.filter-chip'); if(!chip)return;
+            document.querySelectorAll('#filtersBar .filter-chip').forEach(c=>c.classList.remove('active'));
+            chip.classList.add('active'); state.filter = chip.dataset.filter;
+            // Don't reload, filter locally
             loadScripts(true);
         });
-
-        document.getElementById('sortSelect').addEventListener('change', e => {
-            state.sort = e.target.value;
-            loadScripts(true);
-        });
-
+        document.getElementById('sortSelect').addEventListener('change', e => { state.sort = e.target.value; loadScripts(true); });
         $search.addEventListener('input', e => {
             clearTimeout(state.searchTimer);
-            state.searchTimer = setTimeout(() => {
-                state.search = e.target.value.trim();
-                loadScripts(true);
-            }, 450);
+            state.searchTimer = setTimeout(() => { state.search = e.target.value.trim(); loadScripts(true); }, 450);
         });
+        $btnLoadMore.addEventListener('click', loadMore);
 
-        $btnLoadMore.addEventListener('click', () => loadMore());
-
-        // ============ INIT ============
         loadScripts(true);
     })();
     </script>
