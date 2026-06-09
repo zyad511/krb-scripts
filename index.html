@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRB - مركز السكربتات</title>
+    <meta name="description" content="KRB - ابحث ونسخ سكربتات Roblox من Rscripts و ScriptBlox">
+    <meta name="theme-color" content="#e94560">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📜</text></svg>">
+
+    <style>
+        :root {
+            --bg: #0a0a14;
+            --bg2: #12122a;
+            --card: #181830;
+            --border: #252545;
+            --text: #e8e8f0;
+            --sub: #8888b0;
+            --accent: #e94560;
+            --accent2: #1a3a6a;
+            --green: #2ecc71;
+            --orange: #f39c12;
+            --blue: #5b9bd5;
+            --red: #e74c3c;
+            --purple: #9b59b6;
+            --shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+            background-image:
+                radial-gradient(ellipse at 15% 5%, rgba(233,68,96,0.06) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 95%, rgba(91,155,213,0.05) 0%, transparent 55%);
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            background: rgba(18,18,42,0.92);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            padding: 0.9rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 25px rgba(0,0,0,0.6);
+        }
+        .header-inner {
+            max-width: 1500px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            white-space: nowrap;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #e94560, #f39c12, #e94560);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3.5s linear infinite;
+        }
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        .logo-sub {
+            font-size: 0.7rem;
+            color: var(--sub);
+            margin-right: -5px;
+            margin-top: 5px;
+            display: block;
+            letter-spacing: 1px;
+        }
+
+        .search-wrap {
+            flex: 1;
+            min-width: 220px;
+            position: relative;
+        }
+        .search-wrap input {
+            width: 100%;
+            padding: 0.7rem 1rem 0.7rem 3rem;
+            border-radius: 30px;
+            border: 2px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .search-wrap input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(233,68,96,0.12);
+        }
+        .search-wrap input::placeholder { color: var(--sub); }
+        .search-icon {
+            position: absolute;
+            right: 1.1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            pointer-events: none;
+        }
+
+        /* ========== TABS ========== */
+        .tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .tab {
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            border: 1.5px solid var(--border);
+            background: transparent;
+            color: var(--sub);
+            cursor: pointer;
+            font-size: 0.84rem;
+            font-weight: 700;
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 22px rgba(233,68,96,0.35);
+        }
+        .tab:hover:not(.active) {
+            border-color: var(--sub);
+            color: var(--text);
+        }
+
+        /* ========== MAIN ========== */
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 1.3rem 1.5rem;
+        }
+
+        /* ========== FILTERS ========== */
+        .filters-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-bottom: 1.3rem;
+            align-items: center;
+        }
+        .filter-label {
+            font-size: 0.8rem;
+            color: var(--sub);
+            font-weight: 700;
+            margin-left: 0.3rem;
+        }
+        .filter-chip {
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            border: 1.5px solid var(--border);
+            background: var(--bg2);
+            color: var(--sub);
+            cursor: pointer;
+            font-size: 0.78rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            white-space: nowrap;
+            user-select: none;
+        }
+        .filter-chip.active {
+            background: var(--accent2);
+            border-color: var(--blue);
+            color: #fff;
+        }
+        .filter-chip:hover:not(.active) {
+            border-color: var(--sub);
+        }
+        .sort-select {
+            margin-right: auto;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            border: 1.5px solid var(--border);
+            background: var(--bg2);
+            color: var(--text);
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .sort-select option {
+            background: var(--bg2);
+            color: var(--text);
+        }
+
+        /* ========== RESULTS ========== */
+        .results-info {
+            margin-bottom: 1rem;
+            font-size: 0.82rem;
+            color: var(--sub);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .results-info .count {
+            background: var(--accent2);
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        /* ========== GRID ========== */
+        .scripts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 1.1rem;
+        }
+
+        /* ========== CARD ========== */
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 35px rgba(233,68,96,0.2);
+        }
+
+        .card-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            background: var(--bg);
+            overflow: hidden;
+        }
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.45s;
+        }
+        .card:hover .card-img-wrap img {
+            transform: scale(1.07);
+        }
+
+        .card-badges {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: #fff;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        .badge-key { background: rgba(231,76,60,0.88); }
+        .badge-free { background: rgba(46,204,113,0.88); }
+        .badge-paid { background: rgba(243,156,18,0.88); }
+        .badge-mobile { background: rgba(91,155,213,0.88); }
+        .badge-patched { background: rgba(149,165,166,0.85); }
+        .badge-universal { background: rgba(155,89,182,0.88); }
+        .badge-source {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(15,15,30,0.85);
+            font-size: 0.65rem;
+        }
+        .badge-verified {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            background: rgba(46,134,193,0.88);
+            font-size: 0.65rem;
+        }
+
+        .card-body {
+            padding: 0.9rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+        .card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.4;
+        }
+        .card-desc {
+            font-size: 0.78rem;
+            color: var(--sub);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+        }
+        .card-game {
+            font-size: 0.76rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .card-game a {
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .card-game a:hover {
+            text-decoration: underline;
+        }
+
+        .card-dev {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .card-dev img {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border);
+        }
+        .card-dev .dev-name {
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .dev-verified { color: var(--blue); margin-right: 2px; }
+
+        .card-stats {
+            display: flex;
+            gap: 0.8rem;
+            font-size: 0.76rem;
+            color: var(--sub);
+        }
+        .card-stats span {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+        .tag {
+            font-size: 0.63rem;
+            padding: 2px 7px;
+            border-radius: 10px;
+            background: var(--bg2);
+            color: var(--sub);
+            border: 1px solid var(--border);
+        }
+
+        .btn-copy {
+            width: 100%;
+            padding: 0.65rem;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #e94560, #c0392b);
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            margin-top: auto;
+        }
+        .btn-copy:hover {
+            background: linear-gradient(135deg, #ff5e7a, #e94560);
+            box-shadow: 0 4px 18px rgba(233,68,96,0.35);
+        }
+        .btn-copy:active { transform: scale(0.96); }
+        .btn-copy.copied { background: #27ae60 !important; }
+        .btn-copy:disabled { opacity: 0.55; cursor: not-allowed; }
+
+        /* ========== LOAD MORE ========== */
+        .load-more-wrap {
+            text-align: center;
+            margin: 2.5rem 0;
+        }
+        .btn-load-more {
+            padding: 0.75rem 2.5rem;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-load-more:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-load-more:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        /* ========== SKELETON ========== */
+        .skeleton {
+            background: linear-gradient(90deg, var(--card) 25%, var(--border) 50%, var(--card) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 16px;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .skel-card { height: 370px; }
+
+        /* ========== TOAST ========== */
+        .toast-container {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .toast {
+            background: var(--card);
+            color: #fff;
+            padding: 0.65rem 1.4rem;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.55);
+            animation: toastIn 0.35s ease;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            text-align: center;
+            padding: 1.8rem;
+            font-size: 0.78rem;
+            color: var(--sub);
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        footer a:hover { text-decoration: underline; }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .scripts-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+            .card-img-wrap { height: 140px; }
+        }
+        @media (max-width: 680px) {
+            .header-inner { flex-direction: column; align-items: stretch; }
+            .search-wrap { min-width: auto; }
+            .scripts-grid { grid-template-columns: 1fr; }
+            .tabs { justify-content: center; }
+            .filters-bar { justify-content: center; }
+            .sort-select { margin-right: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <div class="header-inner">
+            <div>
+                <div class="logo">KRB</div>
+                <span class="logo-sub">KSA SCRIPTS</span>
+            </div>
+            <div class="search-wrap">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="ابحث عن سكربت..." autocomplete="off">
+            </div>
+            <div class="tabs" id="sourceTabs">
+                <button class="tab active" data-source="all">🌐 الكل</button>
+                <button class="tab" data-source="rscripts">📜 Rscripts</button>
+                <button class="tab" data-source="bloxscript">📦 ScriptBlox</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN ==================== -->
+    <div class="container">
+        <!-- Filters -->
+        <div class="filters-bar" id="filtersBar">
+            <span class="filter-label">🔍 فلترة:</span>
+            <button class="filter-chip active" data-filter="all">✨ الكل</button>
+            <button class="filter-chip" data-filter="free">🆓 مجاني</button>
+            <button class="filter-chip" data-filter="paid">💎 مدفوع</button>
+            <button class="filter-chip" data-filter="nokey">🔓 بدون مفتاح</button>
+            <button class="filter-chip" data-filter="key">🔑 بمفتاح</button>
+            <button class="filter-chip" data-filter="verified">☑️ موثق</button>
+            <button class="filter-chip" data-filter="mobile">📱 جوال</button>
+            <button class="filter-chip" data-filter="unpatched">🟢 يعمل</button>
+            <select class="sort-select" id="sortSelect">
+                <option value="default">🔥 الأكثر تداولاً</option>
+                <option value="newest">📅 الأحدث</option>
+                <option value="views">👁️ الأكثر مشاهدة</option>
+                <option value="likes">❤️ الأكثر إعجاباً</option>
+            </select>
+        </div>
+
+        <!-- Results -->
+        <div class="results-info" id="resultsInfo">
+            ⏳ جاري التحميل...
+        </div>
+
+        <!-- Grid -->
+        <div class="scripts-grid" id="scriptsGrid">
+            <div class="skeleton skel-card"></div>
+            <div class="skeleton skel-card"></div>
+            <div class="skeleton skel-card"></div>
+            <div class="skeleton skel-card"></div>
+            <div class="skeleton skel-card"></div>
+            <div class="skeleton skel-card"></div>
+        </div>
+
+        <!-- Load More -->
+        <div class="load-more-wrap">
+            <button class="btn-load-more" id="btnLoadMore" style="display:none;">📥 تحميل المزيد...</button>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <p><strong>KRB</strong> - مركز السكربتات | Powered by 
+           <a href="https://scriptblox.com" target="_blank" rel="noopener">ScriptBlox.com</a> &amp; 
+           <a href="https://rscripts.net" target="_blank" rel="noopener">Rscripts.net</a>
+        </p>
+        <p style="margin-top:0.4rem;font-size:0.7rem;">© 2025 KRB Scripts - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+    (function() {
+        // ============ STATE ============
+        const state = {
+            source: 'all',
+            filter: 'all',
+            sort: 'default',
+            search: '',
+            page: { rscripts: 1, bloxscript: 1 },
+            maxPages: { rscripts: 1, bloxscript: 1 },
+            isLoading: false,
+            hasMore: { rscripts: true, bloxscript: true },
+            allScripts: [],
+            searchTimer: null
+        };
+
+        // ============ DOM ============
+        const $grid = document.getElementById('scriptsGrid');
+        const $search = document.getElementById('searchInput');
+        const $resultsInfo = document.getElementById('resultsInfo');
+        const $btnLoadMore = document.getElementById('btnLoadMore');
+        const $toastContainer = document.getElementById('toastContainer');
+
+        // ============ API ============
+        const API = {
+            rscripts: 'https://rscripts.net/api/v2',
+            bloxscript: 'https://scriptblox.com/api'
+        };
+
+        // ============ URL BUILDERS ============
+        function buildRscriptsURL(isTrending) {
+            if (isTrending && !state.search) return `${API.rscripts}/trending`;
+            const p = new URLSearchParams();
+            p.set('page', state.page.rscripts);
+            p.set('sort', 'desc');
+            if (state.sort === 'newest') p.set('orderBy', 'date');
+            else if (state.sort === 'views') p.set('orderBy', 'views');
+            else if (state.sort === 'likes') p.set('orderBy', 'likes');
+            else p.set('orderBy', 'date');
+            if (state.search) p.set('q', state.search);
+            if (state.filter === 'nokey') p.set('noKeySystem', 'true');
+            if (state.filter === 'mobile') p.set('mobileOnly', 'true');
+            if (state.filter === 'free') p.set('notPaid', 'true');
+            if (state.filter === 'unpatched') p.set('unpatched', 'true');
+            if (state.filter === 'verified') p.set('verifiedOnly', 'true');
+            return `${API.rscripts}/scripts?${p}`;
+        }
+
+        function buildBloxscriptURL(isTrending) {
+            if (isTrending && !state.search) return `${API.bloxscript}/script/trending`;
+            const isSearch = !!state.search;
+            const endpoint = isSearch ? '/script/search' : '/script/fetch';
+            const p = new URLSearchParams();
+            p.set('page', state.page.bloxscript);
+            p.set('max', '20');
+            if (isSearch) p.set('q', state.search);
+            if (state.sort === 'newest') { p.set('sortBy', 'createdAt'); p.set('order', 'desc'); }
+            else if (state.sort === 'views') { p.set('sortBy', 'views'); p.set('order', 'desc'); }
+            else if (state.sort === 'likes') { p.set('sortBy', 'likeCount'); p.set('order', 'desc'); }
+            if (state.filter === 'free') p.set('mode', 'free');
+            if (state.filter === 'paid') p.set('mode', 'paid');
+            if (state.filter === 'nokey') p.set('key', '0');
+            if (state.filter === 'key') p.set('key', '1');
+            if (state.filter === 'verified') p.set('verified', '1');
+            if (state.filter === 'unpatched') p.set('patched', '0');
+            return `${API.bloxscript}${endpoint}?${p}`;
+        }
+
+        // ============ FETCHERS ============
+        async function fetchRscripts(isTrending) {
+            try {
+                const url = buildRscriptsURL(isTrending);
+                const res = await fetch(url);
+                if (!res.ok) throw new Error(`Status ${res.status}`);
+                const data = await res.json();
+                let scripts = [];
+                if (isTrending && !state.search && data.success) scripts = data.success;
+                else if (data.scripts) scripts = data.scripts;
+                state.maxPages.rscripts = data.info?.maxPages || 1;
+                state.hasMore.rscripts = state.page.rscripts < state.maxPages.rscripts;
+                return scripts.map(normalizeRscript);
+            } catch (e) {
+                console.error('Rscripts:', e);
+                return [];
+            }
+        }
+
+        async function fetchBloxscript(isTrending) {
+            try {
+                const url = buildBloxscriptURL(isTrending);
+                const res = await fetch(url);
+                if (!res.ok) throw new Error(`Status ${res.status}`);
+                const data = await res.json();
+                let scripts = data.result?.scripts || [];
+                state.maxPages.bloxscript = data.result?.totalPages || 1;
+                state.hasMore.bloxscript = state.page.bloxscript < state.maxPages.bloxscript;
+                return scripts.map(normalizeBloxscript);
+            } catch (e) {
+                console.error('Bloxscript:', e);
+                return [];
+            }
+        }
+
+        // ============ NORMALIZERS ============
+        function normalizeRscript(s) {
+            return {
+                id: s._id || s.id,
+                title: s.title || 'بدون عنوان',
+                description: s.description || '',
+                image: s.image || s.game?.imgurl || '',
+                dev: s.user?.username || s.creator || 'مجهول',
+                devImg: s.user?.image || '',
+                devVerified: s.user?.verified || false,
+                views: s.views || 0,
+                likes: s.likes || 0,
+                dislikes: s.dislikes || 0,
+                hasKey: s.keySystem || false,
+                isPaid: s.paid || false,
+                isMobile: s.mobileReady || false,
+                isPatched: false,
+                isUniversal: false,
+                gameName: s.game?.title || '',
+                gameId: s.game?.placeId || null,
+                gameLink: s.game?.gameLink || (s.game?.placeId ? `https://roblox.com/games/${s.game.placeId}` : '#'),
+                codeUrl: s.rawScript || null,
+                code: null,
+                tags: [],
+                source: 'rscripts'
+            };
+        }
+
+        function normalizeBloxscript(s) {
+            return {
+                id: s._id,
+                title: s.title || 'بدون عنوان',
+                description: s.features || '',
+                image: s.image || s.game?.imageUrl || '',
+                dev: s.owner?.username || 'مجهول',
+                devImg: s.owner?.profilePicture || '',
+                devVerified: s.owner?.verified || s.verified || false,
+                views: s.views || 0,
+                likes: s.likeCount || 0,
+                dislikes: s.dislikeCount || 0,
+                hasKey: s.key || false,
+                isPaid: s.scriptType === 'paid',
+                isMobile: false,
+                isPatched: s.isPatched || false,
+                isUniversal: s.isUniversal || false,
+                gameName: s.game?.name || '',
+                gameId: s.game?.gameId || null,
+                gameLink: s.game?.gameId ? `https://roblox.com/games/${s.game.gameId}` : '#',
+                codeUrl: null,
+                code: s.script || null,
+                tags: s.tags || [],
+                source: 'bloxscript'
+            };
+        }
+
+        // ============ GET CODE ============
+        async function getCode(script) {
+            if (script.code) return script.code;
+            if (script.codeUrl) {
+                try {
+                    const r = await fetch(script.codeUrl);
+                    if (r.ok) { script.code = await r.text(); return script.code; }
+                } catch {}
+            }
+            // Try individual endpoint
+            if (script.source === 'bloxscript') {
+                try {
+                    const r = await fetch(`${API.bloxscript}/script/raw/${script.id}`);
+                    if (r.ok) { script.code = await r.text(); return script.code; }
+                } catch {}
+            }
+            return null;
+        }
+
+        // ============ MAIN ============
+        async function loadScripts(reset = true) {
+            if (state.isLoading) return;
+            state.isLoading = true;
+
+            if (reset) {
+                state.page.rscripts = 1;
+                state.page.bloxscript = 1;
+                state.hasMore.rscripts = true;
+                state.hasMore.bloxscript = true;
+                state.allScripts = [];
+                $grid.innerHTML = Array(6).fill('<div class="skeleton skel-card"></div>').join('');
+                $btnLoadMore.style.display = 'none';
+            }
+
+            $btnLoadMore.disabled = true;
+            const isTrending = state.sort === 'default' && !state.search;
+            let scripts = [];
+
+            if (state.source === 'all' || state.source === 'rscripts')
+                scripts = [...scripts, ...(await fetchRscripts(isTrending))];
+            if (state.source === 'all' || state.source === 'bloxscript')
+                scripts = [...scripts, ...(await fetchBloxscript(isTrending))];
+
+            // Local sort for combined
+            if (state.source === 'all' && state.sort === 'views') scripts.sort((a,b) => b.views - a.views);
+            if (state.source === 'all' && state.sort === 'likes') scripts.sort((a,b) => b.likes - a.likes);
+
+            state.allScripts = reset ? scripts : [...state.allScripts, ...scripts];
+            render(state.allScripts);
+
+            const hasMore = state.source === 'all'
+                ? (state.hasMore.rscripts || state.hasMore.bloxscript)
+                : (state.source === 'rscripts' ? state.hasMore.rscripts : state.hasMore.bloxscript);
+
+            $btnLoadMore.style.display = hasMore ? 'inline-block' : 'none';
+            $btnLoadMore.disabled = false;
+            $resultsInfo.innerHTML = `✅ تم العثور على <span class="count">${state.allScripts.length}</span> سكربت`;
+            state.isLoading = false;
+        }
+
+        function loadMore() {
+            if (state.source === 'all') {
+                if (state.hasMore.rscripts) state.page.rscripts++;
+                if (state.hasMore.bloxscript) state.page.bloxscript++;
+            } else if (state.source === 'rscripts') state.page.rscripts++;
+            else state.page.bloxscript++;
+            loadScripts(false);
+        }
+
+        // ============ RENDER ============
+        function render(scripts) {
+            if (!scripts.length) {
+                $grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--sub);">
+                    <div style="font-size:3rem;margin-bottom:1rem;">🔍</div>
+                    <p style="font-size:1.1rem;">لا توجد نتائج</p>
+                    <p style="font-size:0.85rem;">جرب تغيير الفلاتر أو كلمة البحث</p>
+                </div>`;
+                return;
+            }
+
+            $grid.innerHTML = scripts.map(s => `
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="${esc(s.image) || 'https://placehold.co/400x200/181830/8888b0?text=KRB'}"
+                             alt="${esc(s.title)}"
+                             onerror="this.style.display='none'"
+                             loading="lazy">
+                        <div class="card-badges">
+                            ${s.hasKey ? '<span class="badge badge-key">🔑 مفتاح</span>' : '<span class="badge badge-free">✅ مفتوح</span>'}
+                            ${s.isPaid ? '<span class="badge badge-paid">💎 مدفوع</span>' : ''}
+                            ${s.isMobile ? '<span class="badge badge-mobile">📱 جوال</span>' : ''}
+                            ${s.isPatched ? '<span class="badge badge-patched">🚫 متوقف</span>' : ''}
+                            ${s.isUniversal ? '<span class="badge badge-universal">🌐 شامل</span>' : ''}
+                            <span class="badge badge-source">${s.source === 'rscripts' ? '📜 Rscripts' : '📦 ScriptBlox'}</span>
+                            ${s.devVerified ? '<span class="badge badge-verified">☑️ موثق</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">${esc(s.title)}</div>
+                        ${s.description ? `<div class="card-desc">${esc(s.description)}</div>` : ''}
+                        ${s.gameName ? `<div class="card-game">🎮 <a href="${esc(s.gameLink)}" target="_blank">${esc(s.gameName)}</a></div>` : ''}
+                        ${s.tags.length ? `<div class="card-tags">${s.tags.slice(0,4).map(t => `<span class="tag">#${esc(t)}</span>`).join('')}</div>` : ''}
+                        <div class="card-dev">
+                            <img src="${esc(s.devImg) || 'https://placehold.co/100/252545/8888b0?text=U'}"
+                                 alt="${esc(s.dev)}"
+                                 onerror="this.style.display='none'">
+                            <span class="dev-name">${s.devVerified ? '<span class="dev-verified">✅</span>' : ''}${esc(s.dev)}</span>
+                        </div>
+                        <div class="card-stats">
+                            <span>👁️ ${fmt(s.views)}</span>
+                            <span>❤️ ${fmt(s.likes)}</span>
+                            ${s.dislikes > 0 ? `<span>👎 ${fmt(s.dislikes)}</span>` : ''}
+                        </div>
+                        <button class="btn-copy" onclick="window._copyScript('${s.id}','${s.source}',this)">📋 نسخ السكربت</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ============ COPY ============
+        window._copyScript = async function(id, source, btn) {
+            const orig = btn.innerHTML;
+            btn.innerHTML = '⏳ جاري التحميل...';
+            btn.disabled = true;
+            const script = state.allScripts.find(s => s.id === id && s.source === source);
+            if (!script) { btn.innerHTML = orig; btn.disabled = false; return; }
+            const code = await getCode(script);
+            if (code) {
+                await navigator.clipboard.writeText(code);
+                btn.innerHTML = '✅ تم النسخ!';
+                btn.classList.add('copied');
+                toast('✅ تم نسخ السكربت بنجاح!');
+            } else {
+                btn.innerHTML = '❌ فشل';
+                toast('❌ تعذر نسخ السكربت');
+            }
+            setTimeout(() => {
+                btn.innerHTML = orig;
+                btn.classList.remove('copied');
+                btn.disabled = false;
+            }, 2000);
+        };
+
+        // ============ HELPERS ============
+        function esc(str) { if (!str) return ''; const d = document.createElement('div'); d.textContent = str; return d.innerHTML; }
+        function fmt(n) { if (!n) return '0'; if (n>=1e6) return (n/1e6).toFixed(1)+'M'; if (n>=1e3) return (n/1e3).toFixed(1)+'K'; return n.toString(); }
+        function toast(msg) {
+            const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+            $toastContainer.appendChild(t);
+            setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity 0.3s'; setTimeout(() => t.remove(), 300); }, 2200);
+        }
+        function showSkeleton() {
+            $grid.innerHTML = Array(6).fill('<div class="skeleton skel-card"></div>').join('');
+        }
+
+        // ============ EVENTS ============
+        document.getElementById('sourceTabs').addEventListener('click', e => {
+            if (!e.target.classList.contains('tab')) return;
+            document.querySelectorAll('#sourceTabs .tab').forEach(t => t.classList.remove('active'));
+            e.target.classList.add('active');
+            state.source = e.target.dataset.source;
+            loadScripts(true);
+        });
+
+        document.getElementById('filtersBar').addEventListener('click', e => {
+            if (!e.target.classList.contains('filter-chip')) return;
+            document.querySelectorAll('#filtersBar .filter-chip').forEach(c => c.classList.remove('active'));
+            e.target.classList.add('active');
+            state.filter = e.target.dataset.filter;
+            loadScripts(true);
+        });
+
+        document.getElementById('sortSelect').addEventListener('change', e => {
+            state.sort = e.target.value;
+            loadScripts(true);
+        });
+
+        $search.addEventListener('input', e => {
+            clearTimeout(state.searchTimer);
+            state.searchTimer = setTimeout(() => {
+                state.search = e.target.value.trim();
+                loadScripts(true);
+            }, 500);
+        });
+
+        $btnLoadMore.addEventListener('click', () => loadMore());
+
+        // ============ INIT ============
+        loadScripts(true);
+    })();
+    </script>
+</body>
+</html>
