@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KRB - مركز السكربتات | KSA Scripts Hub</title>
-    <meta name="description" content="KRB - ابحث وانسخ أفضل سكربتات Roblox من Rscripts و ScriptBlox">
+    <title>KRB - مركز السكربتات</title>
     <meta name="theme-color" content="#0a0a0f">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0f'/><text x='50' y='68' text-anchor='middle' font-size='50' font-weight='900' fill='%238b5cf6' font-family='Arial'>K</text></svg>">
-
     <style>
         :root {
             --bg: #0a0a0f;
             --card: #13131f;
-            --card2: #1a1a2c;
             --border: #202035;
             --border2: #2e2e4a;
             --text: #eaeaef;
@@ -26,13 +22,7 @@
             --cyan: #22d3ee;
             --pink: #f472b6;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
             background: var(--bg);
@@ -40,23 +30,13 @@
             min-height: 100vh;
             line-height: 1.6;
         }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 10px; }
 
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--border2);
-            border-radius: 10px;
-        }
-
-        /* ==================== HEADER ==================== */
         .header {
             background: rgba(10,10,15,0.95);
             backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--border);
             padding: 0.9rem 1.5rem;
             position: sticky;
@@ -71,33 +51,13 @@
             gap: 1rem;
             flex-wrap: wrap;
         }
+        .logo { font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; white-space: nowrap; }
+        .logo-k { color: #fff; }
+        .logo-r { color: var(--accent2); }
+        .logo-b { color: var(--gold); }
+        .logo-sub { font-size: 0.55rem; color: var(--sub); display: block; letter-spacing: 3px; }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            white-space: nowrap;
-        }
-        .logo-k {
-            color: #fff;
-        }
-        .logo-r {
-            color: var(--accent2);
-        }
-        .logo-b {
-            color: var(--gold);
-        }
-        .logo-sub {
-            font-size: 0.55rem;
-            color: var(--sub);
-            display: block;
-            letter-spacing: 3px;
-        }
-
-        .search-wrap {
-            flex: 1;
-            min-width: 240px;
-        }
+        .search-wrap { flex: 1; min-width: 240px; }
         .search-wrap input {
             width: 100%;
             padding: 0.7rem 1rem;
@@ -113,11 +73,8 @@
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(139,92,246,0.1);
         }
-        .search-wrap input::placeholder {
-            color: var(--sub);
-        }
+        .search-wrap input::placeholder { color: var(--sub); }
 
-        /* ==================== TABS ==================== */
         .tabs {
             display: flex;
             gap: 0.3rem;
@@ -138,41 +95,16 @@
             transition: all 0.25s;
             white-space: nowrap;
         }
-        .tab.active {
-            background: var(--accent);
-            color: #fff;
-        }
-        .tab:hover:not(.active) {
-            color: #fff;
-        }
+        .tab.active { background: var(--accent); color: #fff; }
+        .tab:hover:not(.active) { color: #fff; }
 
-        /* ==================== CONTAINER ==================== */
-        .container {
-            max-width: 1500px;
-            margin: 0 auto;
-            padding: 1.5rem;
-        }
+        .container { max-width: 1500px; margin: 0 auto; padding: 1.5rem; }
 
-        /* ==================== HERO ==================== */
-        .hero {
-            text-align: center;
-            padding: 1.5rem 1rem 1rem;
-        }
-        .hero h1 {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 0.2rem;
-        }
-        .hero h1 span {
-            color: var(--accent2);
-        }
-        .hero p {
-            color: var(--sub);
-            font-size: 0.88rem;
-        }
+        .hero { text-align: center; padding: 1.5rem 1rem 1rem; }
+        .hero h1 { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 0.2rem; }
+        .hero h1 span { color: var(--accent2); }
+        .hero p { color: var(--sub); font-size: 0.88rem; }
 
-        /* ==================== FILTERS BAR ==================== */
         .filters-bar {
             display: flex;
             flex-wrap: wrap;
@@ -184,13 +116,7 @@
             border-radius: 16px;
             border: 1px solid var(--border);
         }
-        .filter-label {
-            font-size: 0.75rem;
-            color: var(--sub);
-            font-weight: 700;
-            margin-left: 0.3rem;
-            white-space: nowrap;
-        }
+        .filter-label { font-size: 0.75rem; color: var(--sub); font-weight: 700; margin-left: 0.3rem; white-space: nowrap; }
         .filter-btn {
             padding: 0.4rem 0.9rem;
             border-radius: 20px;
@@ -203,15 +129,8 @@
             transition: all 0.25s;
             white-space: nowrap;
         }
-        .filter-btn.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: #fff;
-        }
-        .filter-btn:hover:not(.active) {
-            border-color: var(--border2);
-            color: #fff;
-        }
+        .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+        .filter-btn:hover:not(.active) { border-color: var(--border2); color: #fff; }
         .sort-select {
             margin-right: auto;
             padding: 0.4rem 0.9rem;
@@ -223,34 +142,13 @@
             font-weight: 600;
             cursor: pointer;
         }
-        .sort-select option {
-            background: var(--card);
-            color: #fff;
-        }
+        .sort-select option { background: var(--card); color: #fff; }
 
-        /* ==================== STATS ==================== */
-        .stats {
-            margin-bottom: 1.2rem;
-            font-size: 0.82rem;
-            color: var(--sub);
-        }
-        .stats .num {
-            background: var(--accent);
-            color: #fff;
-            padding: 1px 8px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 0.76rem;
-        }
+        .stats { margin-bottom: 1.2rem; font-size: 0.82rem; color: var(--sub); }
+        .stats .num { background: var(--accent); color: #fff; padding: 1px 8px; border-radius: 10px; font-weight: 700; font-size: 0.76rem; }
 
-        /* ==================== GRID ==================== */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
 
-        /* ==================== CARD ==================== */
         .card {
             background: var(--card);
             border-radius: 14px;
@@ -260,358 +158,72 @@
             display: flex;
             flex-direction: column;
         }
-        .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(139,92,246,0.1);
-        }
+        .card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 12px 35px rgba(139,92,246,0.1); }
 
-        .card-img {
-            position: relative;
-            width: 100%;
-            height: 165px;
-            background: #080810;
-            overflow: hidden;
-        }
-        .card-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s;
-        }
-        .card:hover .card-img img {
-            transform: scale(1.05);
-        }
+        .card-img { position: relative; width: 100%; height: 165px; background: #080810; overflow: hidden; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+        .card:hover .card-img img { transform: scale(1.05); }
 
-        .card-badges {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-        }
-        .badge {
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-size: 0.64rem;
-            font-weight: 700;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-        }
-        .badge-key {
-            background: rgba(248,113,113,0.9);
-            color: #fff;
-        }
-        .badge-nokey {
-            background: rgba(52,211,153,0.9);
-            color: #000;
-        }
-        .badge-mobile {
-            background: rgba(96,165,250,0.9);
-            color: #fff;
-        }
-        .badge-patched {
-            background: rgba(148,163,184,0.8);
-            color: #fff;
-        }
-        .badge-source {
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            background: rgba(0,0,0,0.85);
-            color: #fff;
-            font-size: 0.58rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
+        .card-badges { position: absolute; top: 8px; right: 8px; display: flex; gap: 4px; flex-wrap: wrap; }
+        .badge { padding: 3px 8px; border-radius: 6px; font-size: 0.64rem; font-weight: 700; backdrop-filter: blur(6px); }
+        .badge-key { background: rgba(248,113,113,0.9); color: #fff; }
+        .badge-nokey { background: rgba(52,211,153,0.9); color: #000; }
+        .badge-mobile { background: rgba(96,165,250,0.9); color: #fff; }
+        .badge-source { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.85); color: #fff; font-size: 0.58rem; padding: 2px 6px; border-radius: 4px; }
 
-        .card-body {
-            padding: 0.9rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-        .card-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #fff;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            line-height: 1.4;
-        }
-        .card-desc {
-            font-size: 0.74rem;
-            color: var(--sub);
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            flex: 1;
-            transition: all 0.3s;
-        }
-        .card-desc.translated {
-            color: #d4c8f0;
-            border-right: 2px solid var(--accent2);
-            padding-right: 0.4rem;
-            background: rgba(139,92,246,0.05);
-            border-radius: 0 6px 6px 0;
-            padding: 0.3rem 0.4rem;
-        }
+        .card-body { padding: 0.9rem; flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
+        .card-title { font-size: 0.9rem; font-weight: 700; color: #fff; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; }
+        .card-desc { font-size: 0.74rem; color: var(--sub); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex: 1; transition: all 0.3s; }
+        .card-desc.translated { color: #d4c8f0; border-right: 2px solid var(--accent2); padding-right: 0.4rem; }
 
-        .btn-translate {
-            font-size: 0.65rem;
-            padding: 3px 10px;
-            border-radius: 15px;
-            border: 1px solid var(--border2);
-            background: transparent;
-            color: var(--accent2);
-            cursor: pointer;
-            font-weight: 600;
-            align-self: flex-start;
-            transition: all 0.25s;
-        }
-        .btn-translate:hover {
-            background: rgba(139,92,246,0.1);
-            border-color: var(--accent);
-        }
-        .btn-translate:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        .btn-translate.done {
-            background: rgba(52,211,153,0.1);
-            border-color: var(--green);
-            color: var(--green);
-        }
+        .btn-translate { font-size: 0.65rem; padding: 3px 10px; border-radius: 15px; border: 1px solid var(--border2); background: transparent; color: var(--accent2); cursor: pointer; font-weight: 600; align-self: flex-start; transition: all 0.25s; }
+        .btn-translate:hover { background: rgba(139,92,246,0.1); border-color: var(--accent); }
+        .btn-translate:disabled { opacity: 0.5; }
+        .btn-translate.done { background: rgba(52,211,153,0.1); border-color: var(--green); color: var(--green); }
 
-        .card-game {
-            font-size: 0.72rem;
-        }
-        .card-game a {
-            color: var(--cyan);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .card-game a:hover {
-            text-decoration: underline;
-            color: #fff;
-        }
+        .card-game { font-size: 0.72rem; }
+        .card-game a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+        .card-game a:hover { text-decoration: underline; color: #fff; }
 
-        .card-dev {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding-top: 0.4rem;
-            border-top: 1px solid var(--border);
-        }
-        .card-dev img {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid var(--border2);
-        }
-        .card-dev .dev-name {
-            font-size: 0.74rem;
-            font-weight: 600;
-            color: var(--text);
-        }
-        .dev-verified {
-            color: var(--blue);
-            margin-left: 2px;
-        }
+        .card-dev { display: flex; align-items: center; gap: 0.4rem; padding-top: 0.4rem; border-top: 1px solid var(--border); }
+        .card-dev img { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border2); }
+        .card-dev .dev-name { font-size: 0.74rem; font-weight: 600; color: var(--text); }
+        .dev-verified { color: var(--blue); margin-left: 2px; }
 
-        .card-stats {
-            display: flex;
-            gap: 0.7rem;
-            font-size: 0.72rem;
-            color: var(--sub);
-        }
-        .card-stats span {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-        }
-        .stat-v {
-            color: var(--cyan);
-        }
-        .stat-l {
-            color: var(--pink);
-        }
+        .card-stats { display: flex; gap: 0.7rem; font-size: 0.72rem; color: var(--sub); }
+        .stat-v { color: var(--cyan); }
+        .stat-l { color: var(--pink); }
 
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3px;
-        }
-        .ctag {
-            font-size: 0.58rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.02);
-            color: var(--sub);
-            border: 1px solid var(--border);
-        }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+        .ctag { font-size: 0.58rem; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.02); color: var(--sub); border: 1px solid var(--border); }
 
-        .btn-copy {
-            width: 100%;
-            padding: 0.6rem;
-            border: none;
-            border-radius: 8px;
-            background: var(--accent);
-            color: #fff;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 0.82rem;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.3rem;
-            margin-top: auto;
-        }
-        .btn-copy:hover {
-            background: var(--accent2);
-            box-shadow: 0 4px 15px rgba(139,92,246,0.3);
-        }
-        .btn-copy:active {
-            transform: scale(0.97);
-        }
-        .btn-copy.copied {
-            background: var(--green) !important;
-        }
-        .btn-copy:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+        .btn-copy { width: 100%; padding: 0.6rem; border: none; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 700; cursor: pointer; font-size: 0.82rem; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 0.3rem; margin-top: auto; }
+        .btn-copy:hover { background: var(--accent2); }
+        .btn-copy.copied { background: var(--green) !important; }
+        .btn-copy:disabled { opacity: 0.5; }
 
-        /* ==================== LOAD MORE ==================== */
-        .load-more {
-            text-align: center;
-            margin: 2rem 0;
-        }
-        .btn-more {
-            padding: 0.7rem 2.5rem;
-            border-radius: 25px;
-            border: 2px solid var(--accent);
-            background: transparent;
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .btn-more:hover {
-            background: var(--accent);
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(139,92,246,0.3);
-        }
-        .btn-more:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
+        .load-more { text-align: center; margin: 2rem 0; }
+        .btn-more { padding: 0.7rem 2.5rem; border-radius: 25px; border: 2px solid var(--accent); background: transparent; color: var(--accent); font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; }
+        .btn-more:hover { background: var(--accent); color: #fff; }
+        .btn-more:disabled { opacity: 0.3; }
 
-        /* ==================== SKELETON ==================== */
-        .skel {
-            background: linear-gradient(90deg, var(--card) 25%, var(--border) 50%, var(--card) 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 14px;
-            height: 380px;
-        }
-        @keyframes shimmer {
-            0% {
-                background-position: 200% 0;
-            }
-            100% {
-                background-position: -200% 0;
-            }
-        }
+        .skel { background: linear-gradient(90deg, var(--card) 25%, var(--border) 50%, var(--card) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 14px; height: 380px; }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-        /* ==================== NO RESULTS ==================== */
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 3rem;
-            color: var(--sub);
-        }
-        .no-results .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        .no-results p {
-            font-size: 1rem;
-        }
+        .no-results { grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--sub); }
+        .no-results .icon { font-size: 3rem; margin-bottom: 1rem; }
 
-        /* ==================== TOAST ==================== */
-        .toast {
-            position: fixed;
-            bottom: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: #fff;
-            padding: 0.6rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 0.82rem;
-            z-index: 9999;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            animation: toastUp 0.3s ease;
-        }
-        @keyframes toastUp {
-            from {
-                opacity: 0;
-                transform: translateX(-50%) translateY(15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-        }
+        .toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; padding: 0.6rem 1.5rem; border-radius: 25px; font-weight: 700; font-size: 0.82rem; z-index: 9999; box-shadow: 0 8px 25px rgba(0,0,0,0.5); animation: toastUp 0.3s ease; }
+        @keyframes toastUp { from { opacity: 0; transform: translateX(-50%) translateY(15px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
 
-        /* ==================== FOOTER ==================== */
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            color: var(--sub);
-            font-size: 0.72rem;
-            border-top: 1px solid var(--border);
-            margin-top: 2rem;
-        }
-        footer a {
-            color: var(--accent2);
-            text-decoration: none;
-        }
-        footer a:hover {
-            color: #fff;
-        }
+        footer { text-align: center; padding: 1.5rem; color: var(--sub); font-size: 0.72rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+        footer a { color: var(--accent2); text-decoration: none; }
 
-        /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 768px) {
-            .header-inner {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            .card-img {
-                height: 150px;
-            }
-            .hero h1 {
-                font-size: 1.4rem;
-            }
-        }
+        @media (max-width: 768px) { .header-inner { flex-direction: column; } .grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <!-- ==================== HEADER ==================== -->
     <header class="header">
         <div class="header-inner">
             <div class="logo">
@@ -619,7 +231,7 @@
                 <span class="logo-sub">SCRIPTS HUB</span>
             </div>
             <div class="search-wrap">
-                <input type="text" id="searchInput" placeholder="🔍 ابحث عن سكربت بأي لغة... (Blox Fruits, بلوكس فروت, ブルックスフルーツ)" autocomplete="off">
+                <input type="text" id="searchInput" placeholder="🔍 ابحث عن سكربت بأي لغة..." autocomplete="off">
             </div>
             <div class="tabs" id="tabs">
                 <button class="tab active" data-src="all">🌐 الكل</button>
@@ -629,15 +241,12 @@
         </div>
     </header>
 
-    <!-- ==================== MAIN ==================== -->
     <div class="container">
-        <!-- Hero -->
         <div class="hero">
             <h1>مركز <span>السكربتات</span> الأول</h1>
             <p>ابحث وانسخ أفضل سكربتات Roblox مع ترجمة فورية للوصف</p>
         </div>
 
-        <!-- Filters -->
         <div class="filters-bar" id="filtersBar">
             <span class="filter-label">🎯 تصفية:</span>
             <button class="filter-btn active" data-f="all">✨ الكل</button>
@@ -655,508 +264,385 @@
             </select>
         </div>
 
-        <!-- Stats -->
-        <div class="stats" id="stats">⏳ جاري تحميل السكربتات...</div>
-
-        <!-- Grid -->
-        <div class="grid" id="grid">
-            <div class="skel"></div>
-            <div class="skel"></div>
-            <div class="skel"></div>
-            <div class="skel"></div>
-            <div class="skel"></div>
-            <div class="skel"></div>
-            <div class="skel"></div>
-            <div class="skel"></div>
-        </div>
-
-        <!-- Load More -->
-        <div class="load-more">
-            <button class="btn-more" id="btnMore" style="display:none;">📥 تحميل المزيد من السكربتات</button>
-        </div>
+        <div class="stats" id="stats">⏳ جاري التحميل...</div>
+        <div class="grid" id="grid"></div>
+        <div class="load-more"><button class="btn-more" id="btnMore" style="display:none;">📥 تحميل المزيد</button></div>
     </div>
 
-    <!-- ==================== FOOTER ==================== -->
-    <footer>
-        <p><strong style="color:#fff;">KRB</strong> — مركز السكربتات | Powered by 
-           <a href="https://scriptblox.com" target="_blank" rel="noopener">ScriptBlox</a> &amp; 
-           <a href="https://rscripts.net" target="_blank" rel="noopener">Rscripts</a>
-        </p>
-        <p style="margin-top:0.3rem;">© 2025 KRB Scripts Hub - جميع الحقوق محفوظة</p>
-    </footer>
-
-    <!-- Toast -->
+    <footer>© 2025 KRB Scripts | Powered by Rscripts & ScriptBlox</footer>
     <div class="toast" id="toast" style="display:none;"></div>
 
-    <!-- ==================== SCRIPTS ENGINE ==================== -->
     <script>
     (function() {
-        // ==================== STATE ====================
         var S = {
-            src: 'all',
-            f: 'all',
-            sort: 'default',
-            qRaw: '',
-            qEn: '',
-            pR: 1,
-            pB: 1,
-            mR: true,
-            mB: true,
-            busy: false,
-            scripts: [],
-            timer: null
+            src: 'all', f: 'all', sort: 'default', qRaw: '', qEn: '',
+            pR: 1, pB: 1, mR: true, mB: true, busy: false,
+            scripts: [], timer: null
         };
-
-        // ==================== DOM ====================
         var grid = document.getElementById('grid');
         var searchInput = document.getElementById('searchInput');
         var statsEl = document.getElementById('stats');
         var btnMore = document.getElementById('btnMore');
         var toastEl = document.getElementById('toast');
-
-        // ==================== TRANSLATE CACHE ====================
         var trCache = {};
 
-        // ==================== TRANSLATE TO ENGLISH ====================
-        async function translateToEnglish(text) {
-            if (!text || text.length === 0) return '';
-            // If already English
-            if (/^[a-zA-Z0-9\s.,!?\-+=\[\]{}'"<>:;@#$%^&*()_/\\]+$/.test(text) && !/[^\x00-\x7F]/.test(text)) {
-                return text;
-            }
-            var cacheKey = 'toen_' + text.substring(0, 80);
-            if (trCache[cacheKey]) return trCache[cacheKey];
+        // ========== TRANSLATE TO ENGLISH ==========
+        async function toEn(text) {
+            if (!text) return '';
+            if (/^[a-zA-Z0-9\s.,!?\-+=\[\]{}'"<>:;@#$%^&*()_/\\]+$/.test(text) && !/[^\x00-\x7F]/.test(text)) return text;
+            var k = 'en_' + text.substring(0, 80);
+            if (trCache[k]) return trCache[k];
             try {
-                var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=' + encodeURIComponent(text);
-                var res = await fetch(url);
-                if (!res.ok) throw new Error('Translate failed');
-                var data = await res.json();
-                var translated = '';
-                if (data && data[0]) {
-                    for (var i = 0; i < data[0].length; i++) {
-                        translated += data[0][i][0];
-                    }
-                }
-                if (!translated) translated = text;
-                if (translated !== text) {
-                    trCache[cacheKey] = translated;
-                }
-                return translated;
-            } catch (e) {
-                return text;
-            }
+                var u = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=' + encodeURIComponent(text);
+                var r = await fetch(u);
+                var d = await r.json();
+                var tx = '';
+                if (d && d[0]) { for (var i = 0; i < d[0].length; i++) { tx += d[0][i][0]; } }
+                if (!tx) tx = text;
+                if (tx !== text) trCache[k] = tx;
+                return tx;
+            } catch (e) { return text; }
         }
 
-        // ==================== TRANSLATE TO ARABIC ====================
-        async function translateToArabic(text) {
+        // ========== TRANSLATE TO ARABIC ==========
+        async function toAr(text) {
             if (!text || text.length < 3) return text;
-            var cacheKey = 'toar_' + text.substring(0, 70);
-            if (trCache[cacheKey]) return trCache[cacheKey];
+            var k = 'ar_' + text.substring(0, 70);
+            if (trCache[k]) return trCache[k];
             try {
-                var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ar&dt=t&q=' + encodeURIComponent(text);
-                var res = await fetch(url);
-                if (!res.ok) throw new Error('Translate failed');
-                var data = await res.json();
-                var translated = '';
-                if (data && data[0]) {
-                    for (var i = 0; i < data[0].length; i++) {
-                        translated += data[0][i][0];
-                    }
-                }
-                if (!translated) translated = text;
-                if (translated !== text) {
-                    trCache[cacheKey] = translated;
-                }
-                return translated;
-            } catch (e) {
-                return text;
-            }
+                var u = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ar&dt=t&q=' + encodeURIComponent(text);
+                var r = await fetch(u);
+                var d = await r.json();
+                var tx = '';
+                if (d && d[0]) { for (var i = 0; i < d[0].length; i++) { tx += d[0][i][0]; } }
+                if (!tx) tx = text;
+                if (tx !== text) trCache[k] = tx;
+                return tx;
+            } catch (e) { return text; }
         }
 
-        // ==================== BUILD RSCRIPTS URL ====================
-        function buildRscriptsURL() {
-            // If trending and no search
+        // ========== BUILD RSCRIPTS URL ==========
+        function urlR() {
+            // TRENDING: no search + default sort
             if (!S.qEn && S.sort === 'default') {
                 return 'https://rscripts.net/api/v2/trending';
             }
-            var params = new URLSearchParams();
-            params.set('page', S.pR.toString());
-            params.set('sort', 'desc');
-            if (S.sort === 'newest') {
-                params.set('orderBy', 'date');
-            } else if (S.sort === 'views') {
-                params.set('orderBy', 'views');
-            } else if (S.sort === 'likes') {
-                params.set('orderBy', 'likes');
-            } else {
-                params.set('orderBy', 'date');
-            }
-            if (S.qEn) {
-                params.set('q', S.qEn);
-            }
-            if (S.f === 'nokey') params.set('noKeySystem', 'true');
-            if (S.f === 'mobile') params.set('mobileOnly', 'true');
-            if (S.f === 'free') params.set('notPaid', 'true');
-            if (S.f === 'unpatched') params.set('unpatched', 'true');
-            if (S.f === 'verified') params.set('verifiedOnly', 'true');
-            return 'https://rscripts.net/api/v2/scripts?' + params.toString();
+            // SCRIPTS LIST with filters
+            var p = new URLSearchParams();
+            p.set('page', S.pR.toString());
+            p.set('sort', 'desc');
+            if (S.sort === 'newest') p.set('orderBy', 'date');
+            else if (S.sort === 'views') p.set('orderBy', 'views');
+            else if (S.sort === 'likes') p.set('orderBy', 'likes');
+            else p.set('orderBy', 'date');
+            if (S.qEn) p.set('q', S.qEn);
+            if (S.f === 'nokey') p.set('noKeySystem', 'true');
+            if (S.f === 'mobile') p.set('mobileOnly', 'true');
+            if (S.f === 'free') p.set('notPaid', 'true');
+            if (S.f === 'unpatched') p.set('unpatched', 'true');
+            if (S.f === 'verified') p.set('verifiedOnly', 'true');
+            return 'https://rscripts.net/api/v2/scripts?' + p.toString();
         }
 
-        // ==================== BUILD BLOXSCRIPT URL ====================
-        function buildBloxscriptURL() {
-            // If trending and no search
+        // ========== BUILD BLOXSCRIPT URL ==========
+        function urlB() {
+            // TRENDING
             if (!S.qEn && S.sort === 'default') {
                 return 'https://scriptblox.com/api/script/trending';
             }
+            // SEARCH or FETCH
             var endpoint = S.qEn ? '/script/search' : '/script/fetch';
-            var params = new URLSearchParams();
-            params.set('page', S.pB.toString());
-            params.set('max', '40');
-            if (S.qEn) {
-                params.set('q', S.qEn);
-            }
-            if (S.sort === 'newest') {
-                params.set('sortBy', 'createdAt');
-                params.set('order', 'desc');
-            } else if (S.sort === 'views') {
-                params.set('sortBy', 'views');
-                params.set('order', 'desc');
-            } else if (S.sort === 'likes') {
-                params.set('sortBy', 'likeCount');
-                params.set('order', 'desc');
-            }
-            if (S.f === 'free') params.set('mode', 'free');
-            if (S.f === 'nokey') params.set('key', '0');
-            if (S.f === 'key') params.set('key', '1');
-            if (S.f === 'verified') params.set('verified', '1');
-            if (S.f === 'unpatched') params.set('patched', '0');
-            return 'https://scriptblox.com/api' + endpoint + '?' + params.toString();
+            var p = new URLSearchParams();
+            p.set('page', S.pB.toString());
+            p.set('max', '40');
+            if (S.qEn) p.set('q', S.qEn);
+            if (S.sort === 'newest') { p.set('sortBy', 'createdAt'); p.set('order', 'desc'); }
+            else if (S.sort === 'views') { p.set('sortBy', 'views'); p.set('order', 'desc'); }
+            else if (S.sort === 'likes') { p.set('sortBy', 'likeCount'); p.set('order', 'desc'); }
+            if (S.f === 'free') p.set('mode', 'free');
+            if (S.f === 'nokey') p.set('key', '0');
+            if (S.f === 'key') p.set('key', '1');
+            if (S.f === 'verified') p.set('verified', '1');
+            if (S.f === 'unpatched') p.set('patched', '0');
+            return 'https://scriptblox.com/api' + endpoint + '?' + p.toString();
         }
 
-        // ==================== NORMALIZE RSCRIPT ====================
-        function normalizeRscript(raw) {
-            var s = raw;
-            // Trending response has different structure
-            if (raw.script) {
+        // ========== NORMALIZE RSCRIPT ==========
+        function nR(raw) {
+            // Trending structure: { _id, views, script: {...}, user: {...} }
+            // Scripts list structure: { _id, title, description, user: {...}, ... }
+            var s;
+            if (raw.script && typeof raw.script === 'object') {
+                // Trending format
                 s = raw.script;
-                s.views = raw.views || raw.script.views;
-                s.user = raw.user;
+                s._id = s._id || raw._id;
+                s.views = raw.views || s.views || 0;
+                s.user = raw.user || s.user;
+                s.likes = s.likes || 0;
+            } else {
+                s = raw;
             }
             var hasUser = s.user && typeof s.user === 'object' && Object.keys(s.user).length > 0;
-            var title = s.title || 'بدون عنوان';
-            var description = (s.description || '').trim();
-            var image = s.image || (s.game && s.game.imgurl) || '';
-            var dev = hasUser ? (s.user.username || '') : (s.creator || 'مجهول');
-            var devImg = hasUser ? (s.user.image || '') : '';
-            var devVerified = hasUser ? (s.user.verified || false) : false;
-            var views = s.views || 0;
-            var likes = s.likes || 0;
-            var hasKey = s.keySystem || false;
-            var isPaid = s.paid || false;
-            var isMobile = s.mobileReady || false;
-            var gameName = (s.game && s.game.title) || '';
-            var gameId = (s.game && s.game.placeId) || null;
-            var gameLink = (s.game && s.game.gameLink) || (gameId ? 'https://www.roblox.com/games/' + gameId : '');
-            var codeUrl = s.rawScript || null;
-
             return {
                 id: s._id || s.id || '',
-                title: title,
-                desc: description,
-                img: image,
-                dev: dev,
-                devImg: devImg,
-                devV: devVerified,
-                views: views,
-                likes: likes,
+                title: s.title || 'بدون عنوان',
+                desc: (s.description || '').trim(),
+                img: s.image || (s.game && s.game.imgurl) || '',
+                dev: hasUser ? (s.user.username || '') : (s.creator || 'مجهول'),
+                devImg: hasUser ? (s.user.image || '') : '',
+                devV: hasUser ? (s.user.verified || false) : false,
+                views: s.views || 0,
+                likes: s.likes || 0,
                 dislikes: s.dislikes || 0,
-                key: hasKey,
-                paid: isPaid,
-                mobile: isMobile,
+                key: s.keySystem || false,
+                paid: s.paid || false,
+                mobile: s.mobileReady || false,
                 patched: false,
-                game: gameName,
-                gameUrl: gameLink,
-                codeUrl: codeUrl,
+                game: (s.game && s.game.title) || '',
+                gameUrl: (s.game && s.game.gameLink) || (s.game && s.game.placeId ? 'https://roblox.com/games/' + s.game.placeId : ''),
+                codeUrl: s.rawScript || null,
                 code: null,
                 tags: [],
                 source: 'rscripts'
             };
         }
 
-        // ==================== NORMALIZE BLOXSCRIPT ====================
-        function normalizeBloxscript(s) {
-            var owner = s.owner || {};
+        // ========== NORMALIZE BLOXSCRIPT ==========
+        function nB(s) {
+            // Trending: { _id, views, script: {...}, user: {...} }
+            // Fetch/Search: { _id, title, owner: {...}, ... }
+            var owner = {};
+            var title = s.title || '';
+            var features = s.features || '';
+            var image = s.image || '';
+            var gameName = '';
+            var gameId = null;
+            var scriptCode = s.script || null;
+            var tags = s.tags || [];
+
+            // If trending structure (nested script object)
+            if (s.script && typeof s.script === 'object') {
+                title = s.script.title || title;
+                features = s.script.features || features;
+                image = s.script.image || image;
+                gameName = s.script.game && s.script.game.name ? s.script.game.name : '';
+                gameId = s.script.game && s.script.game.gameId ? s.script.game.gameId : null;
+                scriptCode = s.script.script || scriptCode;
+                tags = s.script.tags || tags;
+                owner = s.user || s.script.owner || {};
+            } else {
+                // Normal structure
+                owner = s.owner || {};
+                gameName = s.game && s.game.name ? s.game.name : '';
+                gameId = s.game && s.game.gameId ? s.game.gameId : null;
+                image = s.image || (s.game && s.game.imageUrl) || '';
+            }
+
             return {
                 id: s._id || '',
-                title: s.title || 'بدون عنوان',
-                desc: (s.features || '').trim(),
-                img: s.image || (s.game && s.game.imageUrl) || '',
+                title: title || 'بدون عنوان',
+                desc: (features || '').trim(),
+                img: image,
                 dev: owner.username || 'مجهول',
                 devImg: owner.profilePicture || '',
                 devV: owner.verified || s.verified || false,
                 views: s.views || 0,
-                likes: s.likeCount || 0,
+                likes: s.likeCount || s.likes || 0,
                 dislikes: s.dislikeCount || 0,
                 key: s.key || false,
                 paid: s.scriptType === 'paid',
                 mobile: false,
                 patched: s.isPatched || false,
-                game: (s.game && s.game.name) || '',
-                gameUrl: (s.game && s.game.gameId) ? 'https://www.roblox.com/games/' + s.game.gameId : '',
-                code: s.script || null,
-                tags: Array.isArray(s.tags) ? s.tags : [],
+                game: gameName,
+                gameUrl: gameId ? 'https://roblox.com/games/' + gameId : '',
+                code: scriptCode,
+                tags: Array.isArray(tags) ? tags : [],
                 source: 'bloxscript'
             };
         }
 
-        // ==================== FETCH RSCRIPTS ====================
-        async function fetchRscripts() {
+        // ========== FETCH RSCRIPTS ==========
+        async function fR() {
             try {
-                var url = buildRscriptsURL();
-                var res = await fetch(url);
-                if (!res.ok) throw new Error('Rscripts status: ' + res.status);
-                var data = await res.json();
-                var scripts = [];
+                var u = urlR();
+                console.log('Rscripts URL:', u);
+                var r = await fetch(u);
+                if (!r.ok) throw new Error('Status: ' + r.status);
+                var d = await r.json();
+                console.log('Rscripts response keys:', Object.keys(d));
 
-                if (!S.qEn && S.sort === 'default') {
-                    // Trending
-                    if (data.success && Array.isArray(data.success)) {
-                        scripts = data.success;
-                    }
-                } else {
-                    // Scripts list
-                    if (data.scripts && Array.isArray(data.scripts)) {
-                        scripts = data.scripts;
-                    }
+                var sc = [];
+                // Trending response
+                if (d.success && Array.isArray(d.success)) {
+                    sc = d.success;
+                    S.mR = false; // Trending has no pagination
                 }
-
-                var currentPage = (data.info && data.info.currentPage) || S.pR;
-                var maxPages = (data.info && data.info.maxPages) || 1;
-                S.mR = currentPage < maxPages;
-
+                // Scripts list response
+                else if (d.scripts && Array.isArray(d.scripts)) {
+                    sc = d.scripts;
+                    var cp = d.info && d.info.currentPage ? d.info.currentPage : S.pR;
+                    var mp = d.info && d.info.maxPages ? d.info.maxPages : 1;
+                    S.mR = cp < mp;
+                }
+                console.log('Rscripts count:', sc.length);
                 var result = [];
-                for (var i = 0; i < scripts.length; i++) {
-                    result.push(normalizeRscript(scripts[i]));
+                for (var i = 0; i < sc.length; i++) {
+                    result.push(nR(sc[i]));
                 }
                 return result;
             } catch (e) {
-                console.error('Rscripts fetch error:', e);
+                console.error('Rscripts error:', e.message);
                 return [];
             }
         }
 
-        // ==================== FETCH BLOXSCRIPT ====================
-        async function fetchBloxscript() {
+        // ========== FETCH BLOXSCRIPT ==========
+        async function fB() {
             try {
-                var url = buildBloxscriptURL();
-                console.log('Bloxscript URL:', url);
-                var res = await fetch(url);
-                if (!res.ok) throw new Error('Bloxscript status: ' + res.status);
-                var data = await res.json();
-                console.log('Bloxscript response:', data);
+                var u = urlB();
+                console.log('Bloxscript URL:', u);
+                var r = await fetch(u);
+                if (!r.ok) throw new Error('Status: ' + r.status);
+                var d = await r.json();
+                console.log('Bloxscript response keys:', Object.keys(d));
 
-                var scripts = [];
-                if (data.result && data.result.scripts) {
-                    scripts = data.result.scripts;
-                } else if (data.scripts) {
-                    scripts = data.scripts;
+                var sc = [];
+                // Trending response
+                if (d.result && d.result.scripts) {
+                    sc = d.result.scripts;
+                    var tp = d.result.totalPages || 1;
+                    S.mB = S.pB < tp;
                 }
-
-                var totalPages = (data.result && data.result.totalPages) || 1;
-                S.mB = S.pB < totalPages;
-
-                console.log('Bloxscript loaded:', scripts.length, 'scripts');
+                // Other response formats
+                else if (d.scripts) {
+                    sc = d.scripts;
+                    S.mB = false;
+                }
+                console.log('Bloxscript count:', sc.length);
                 var result = [];
-                for (var i = 0; i < scripts.length; i++) {
-                    result.push(normalizeBloxscript(scripts[i]));
+                for (var i = 0; i < sc.length; i++) {
+                    result.push(nB(sc[i]));
                 }
                 return result;
             } catch (e) {
-                console.error('Bloxscript fetch error:', e);
+                console.error('Bloxscript error:', e.message);
                 return [];
             }
         }
 
-        // ==================== GET SCRIPT CODE ====================
+        // ========== GET CODE ==========
         var codeCache = {};
-        async function getCode(script) {
-            var cacheKey = script.source + '_' + script.id;
-            if (codeCache[cacheKey]) return codeCache[cacheKey];
-
-            if (script.code) {
-                codeCache[cacheKey] = script.code;
-                return script.code;
+        async function getCode(sc) {
+            var k = sc.source + '_' + sc.id;
+            if (codeCache[k]) return codeCache[k];
+            if (sc.code) { codeCache[k] = sc.code; return sc.code; }
+            if (sc.source === 'rscripts' && sc.codeUrl) {
+                try { var r1 = await fetch(sc.codeUrl); if (r1.ok) { var t = await r1.text(); codeCache[k] = t; return t; } } catch (e) {}
+                try { var r2 = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(sc.codeUrl)); if (r2.ok) { var t2 = await r2.text(); codeCache[k] = t2; return t2; } } catch (e) {}
             }
-
-            if (script.source === 'rscripts' && script.codeUrl) {
-                try {
-                    var res = await fetch(script.codeUrl);
-                    if (res.ok) {
-                        var text = await res.text();
-                        codeCache[cacheKey] = text;
-                        return text;
-                    }
-                } catch (e) {}
-                // Try CORS proxy
-                try {
-                    var proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(script.codeUrl);
-                    var res2 = await fetch(proxyUrl);
-                    if (res2.ok) {
-                        var text2 = await res2.text();
-                        codeCache[cacheKey] = text2;
-                        return text2;
-                    }
-                } catch (e2) {}
+            if (sc.source === 'bloxscript') {
+                try { var r3 = await fetch('https://scriptblox.com/api/script/raw/' + sc.id); if (r3.ok) { var t3 = await r3.text(); codeCache[k] = t3; return t3; } } catch (e) {}
             }
-
-            if (script.source === 'bloxscript') {
-                try {
-                    var res3 = await fetch('https://scriptblox.com/api/script/raw/' + script.id);
-                    if (res3.ok) {
-                        var text3 = await res3.text();
-                        codeCache[cacheKey] = text3;
-                        return text3;
-                    }
-                } catch (e3) {}
-            }
-
             return null;
         }
 
-        // ==================== LOCAL FILTER ====================
-        function applyLocalFilter(arr) {
+        // ========== LOCAL FILTER ==========
+        function locFil(arr) {
             if (S.f === 'all') return arr;
             return arr.filter(function(s) {
                 switch (S.f) {
-                    case 'free':
-                        return !s.paid && !s.key;
-                    case 'nokey':
-                        return !s.key;
-                    case 'key':
-                        return s.key;
-                    case 'mobile':
-                        return s.mobile;
-                    case 'unpatched':
-                        return !s.patched;
-                    case 'verified':
-                        return s.devV;
-                    default:
-                        return true;
+                    case 'free': return !s.paid && !s.key;
+                    case 'nokey': return !s.key;
+                    case 'key': return s.key;
+                    case 'mobile': return s.mobile;
+                    case 'unpatched': return !s.patched;
+                    case 'verified': return s.devV;
+                    default: return true;
                 }
             });
         }
 
-        // ==================== MAIN LOAD ====================
-        async function loadScripts(reset) {
+        // ========== MAIN LOAD ==========
+        async function load(reset) {
             if (S.busy) return;
             S.busy = true;
-
             if (reset === undefined) reset = true;
 
             if (reset) {
-                S.pR = 1;
-                S.pB = 1;
-                S.mR = true;
-                S.mB = true;
-                S.scripts = [];
+                S.pR = 1; S.pB = 1; S.mR = true; S.mB = true; S.scripts = [];
                 grid.innerHTML = '';
-                for (var i = 0; i < 8; i++) {
-                    grid.innerHTML += '<div class="skel"></div>';
-                }
+                for (var i = 0; i < 12; i++) { grid.innerHTML += '<div class="skel"></div>'; }
                 btnMore.style.display = 'none';
             }
 
             btnMore.disabled = true;
-            var allScripts = [];
+            var all = [];
 
-            // Fetch from Rscripts
             if (S.src === 'all' || S.src === 'rscripts') {
-                var rscripts = await fetchRscripts();
-                console.log('Rscripts loaded:', rscripts.length);
-                for (var j = 0; j < rscripts.length; j++) {
-                    allScripts.push(rscripts[j]);
-                }
+                var rScripts = await fR();
+                console.log('Rscripts loaded:', rScripts.length);
+                for (var j = 0; j < rScripts.length; j++) { all.push(rScripts[j]); }
             }
 
-            // Fetch from Bloxscript
             if (S.src === 'all' || S.src === 'bloxscript') {
-                var bloxscripts = await fetchBloxscript();
-                console.log('Bloxscript loaded:', bloxscripts.length);
-                for (var k = 0; k < bloxscripts.length; k++) {
-                    allScripts.push(bloxscripts[k]);
-                }
+                var bScripts = await fB();
+                console.log('Bloxscript loaded:', bScripts.length);
+                for (var k = 0; k < bScripts.length; k++) { all.push(bScripts[k]); }
             }
 
-            console.log('Total before filter:', allScripts.length);
+            console.log('Total before filter:', all.length);
+            all = locFil(all);
+            console.log('Total after filter:', all.length);
 
-            // Apply filter
-            allScripts = applyLocalFilter(allScripts);
-            console.log('Total after filter:', allScripts.length);
+            // Sort
+            if (S.sort === 'views') all.sort(function(a, b) { return b.views - a.views; });
+            else if (S.sort === 'likes') all.sort(function(a, b) { return b.likes - a.likes; });
 
-            // Sort locally
-            if (S.sort === 'views') {
-                allScripts.sort(function(a, b) { return b.views - a.views; });
-            } else if (S.sort === 'likes') {
-                allScripts.sort(function(a, b) { return b.likes - a.likes; });
-            }
-
-            // Merge with existing
-            if (reset) {
-                S.scripts = allScripts;
-            } else {
-                for (var m = 0; m < allScripts.length; m++) {
-                    S.scripts.push(allScripts[m]);
-                }
-            }
+            if (reset) S.scripts = all;
+            else { for (var m = 0; m < all.length; m++) { S.scripts.push(all[m]); } }
 
             // Remove duplicates
             S.scripts = S.scripts.filter(function(s, i, a) {
-                return a.findIndex(function(x) {
-                    return x.id === s.id && x.source === s.source;
-                }) === i;
+                return a.findIndex(function(x) { return x.id === s.id && x.source === s.source; }) === i;
             });
 
-            // Render
-            renderScripts();
+            console.log('Final scripts count:', S.scripts.length);
+            render();
 
-            // Update load more button
-            var hasMore;
-            if (S.src === 'all') {
-                hasMore = S.mR || S.mB;
-            } else if (S.src === 'rscripts') {
-                hasMore = S.mR;
-            } else {
-                hasMore = S.mB;
-            }
-
-            if (hasMore) {
-                btnMore.style.display = 'inline-block';
-            } else {
-                btnMore.style.display = 'none';
-            }
+            var more = S.src === 'all' ? (S.mR || S.mB) : (S.src === 'rscripts' ? S.mR : S.mB);
+            btnMore.style.display = more ? 'inline-block' : 'none';
             btnMore.disabled = false;
-
             statsEl.innerHTML = '✅ تم العثور على <span class="num">' + S.scripts.length + '</span> سكربت';
             S.busy = false;
         }
 
-        // ==================== LOAD MORE ====================
+        // ========== LOAD MORE ==========
         function loadMore() {
-            if (S.src === 'all') {
-                if (S.mR) S.pR++;
-                if (S.mB) S.pB++;
-            } else if (S.src === 'rscripts') {
-                S.pR++;
-            } else {
-                S.pB++;
-            }
-            loadScripts(false);
+            if (S.src === 'all') { if (S.mR) S.pR++; if (S.mB) S.pB++; }
+            else if (S.src === 'rscripts') S.pR++;
+            else S.pB++;
+            load(false);
         }
 
-        // ==================== RENDER ====================
-        function renderScripts() {
+        // ========== INFINITE SCROLL ==========
+        var scrollTimeout;
+        window.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                var windowHeight = window.innerHeight;
+                var documentHeight = document.documentElement.scrollHeight;
+                if (scrollTop + windowHeight >= documentHeight - 600 && !S.busy) {
+                    var more = S.src === 'all' ? (S.mR || S.mB) : (S.src === 'rscripts' ? S.mR : S.mB);
+                    if (more) loadMore();
+                }
+            }, 300);
+        });
+
+        // ========== RENDER ==========
+        function render() {
             if (!S.scripts.length) {
-                grid.innerHTML = '<div class="no-results"><div class="icon">🔍</div><p>لا توجد نتائج</p><p style="font-size:0.8rem;margin-top:0.3rem;">جرب تغيير الفلاتر أو البحث بكلمة مختلفة</p></div>';
+                grid.innerHTML = '<div class="no-results"><div class="icon">🔍</div><p>لا توجد نتائج</p><p style="font-size:0.8rem;">جرب تغيير الفلاتر أو البحث بكلمة مختلفة</p></div>';
                 return;
             }
 
@@ -1168,33 +654,21 @@
                 var isEnglish = /^[a-zA-Z]/.test(desc);
                 var uid = (s.source + '_' + s.id).replace(/[^a-zA-Z0-9]/g, '_');
 
-                // Badges
                 var badgesHtml = '';
-                if (s.key) {
-                    badgesHtml += '<span class="badge badge-key">🔑 بمفتاح</span>';
-                } else {
-                    badgesHtml += '<span class="badge badge-nokey">🔓 بدون مفتاح</span>';
-                }
-                if (s.mobile) {
-                    badgesHtml += '<span class="badge badge-mobile">📱 جوال</span>';
-                }
-                if (s.patched) {
-                    badgesHtml += '<span class="badge badge-patched">🚫 متوقف</span>';
-                }
+                if (s.key) { badgesHtml += '<span class="badge badge-key">🔑 بمفتاح</span>'; }
+                else { badgesHtml += '<span class="badge badge-nokey">🔓 بدون مفتاح</span>'; }
+                if (s.mobile) { badgesHtml += '<span class="badge badge-mobile">📱 جوال</span>'; }
 
-                // Translate button
                 var translateBtn = '';
                 if (hasDesc && isEnglish) {
                     translateBtn = '<button class="btn-translate" onclick="window._krbTranslate(this,\'' + uid + '\')">🌐 ترجمة الوصف</button>';
                 }
 
-                // Game
                 var gameHtml = '';
                 if (s.game) {
-                    gameHtml = '<div class="card-game">🎮 <a href="' + escHtml(s.gameUrl) + '" target="_blank" rel="noopener">' + escHtml(s.game) + '</a></div>';
+                    gameHtml = '<div class="card-game">🎮 <a href="' + escHtml(s.gameUrl) + '" target="_blank">' + escHtml(s.game) + '</a></div>';
                 }
 
-                // Tags
                 var tagsHtml = '';
                 if (s.tags && s.tags.length > 0) {
                     tagsHtml = '<div class="card-tags">';
@@ -1204,46 +678,27 @@
                     tagsHtml += '</div>';
                 }
 
-                // Developer
                 var devVerifiedHtml = s.devV ? '<span class="dev-verified">✅</span>' : '';
-                var devImgHtml = s.devImg ? '<img src="' + escHtml(s.devImg) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '';
-
-                // Source label
+                var devImgHtml = s.devImg ? '<img src="' + escHtml(s.devImg) + '" onerror="this.style.display=\'none\'">' : '';
                 var sourceLabel = s.source === 'rscripts' ? '📜 Rscripts' : '📦 ScriptBlox';
-
-                // Stats
-                var viewsFormatted = fmtNum(s.views);
-                var likesFormatted = fmtNum(s.likes);
-
-                // Image
-                var imgHtml = s.img ? '<img src="' + escHtml(s.img) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '';
-
-                // Description HTML
-                var descHtml = '';
-                if (hasDesc) {
-                    descHtml = '<div class="card-desc" id="desc-' + uid + '" data-o="' + escHtml(desc) + '">' + escHtml(desc) + '</div>';
-                }
+                var imgHtml = s.img ? '<img src="' + escHtml(s.img) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '';
+                var descHtml = hasDesc ? '<div class="card-desc" id="desc-' + uid + '" data-o="' + escHtml(desc) + '">' + escHtml(desc) + '</div>' : '';
 
                 grid.innerHTML +=
                     '<div class="card">' +
-                        '<div class="card-img">' +
-                            imgHtml +
+                        '<div class="card-img">' + imgHtml +
                             '<div class="card-badges">' + badgesHtml + '</div>' +
                             '<span class="badge badge-source">' + sourceLabel + '</span>' +
                         '</div>' +
                         '<div class="card-body">' +
                             '<div class="card-title">' + escHtml(s.title) + '</div>' +
-                            descHtml +
-                            translateBtn +
-                            gameHtml +
-                            tagsHtml +
-                            '<div class="card-dev">' +
-                                devImgHtml +
+                            descHtml + translateBtn + gameHtml + tagsHtml +
+                            '<div class="card-dev">' + devImgHtml +
                                 '<span class="dev-name">' + devVerifiedHtml + escHtml(s.dev) + '</span>' +
                             '</div>' +
                             '<div class="card-stats">' +
-                                '<span class="stat-v">👁️ ' + viewsFormatted + '</span>' +
-                                '<span class="stat-l">❤️ ' + likesFormatted + '</span>' +
+                                '<span class="stat-v">👁️ ' + fmtNum(s.views) + '</span>' +
+                                '<span class="stat-l">❤️ ' + fmtNum(s.likes) + '</span>' +
                             '</div>' +
                             '<button class="btn-copy" onclick="window._krbCopy(this,\'' + escHtml(s.id) + '\',\'' + s.source + '\')">📋 نسخ السكربت</button>' +
                         '</div>' +
@@ -1251,160 +706,90 @@
             }
         }
 
-        // ==================== TRANSLATE DESCRIPTION ====================
+        // ========== TRANSLATE DESCRIPTION ==========
         window._krbTranslate = async function(btn, uid) {
             if (btn.disabled) return;
             var el = document.getElementById('desc-' + uid);
             if (!el) return;
             var original = el.getAttribute('data-o') || el.textContent;
-            btn.innerHTML = '⏳...';
+            btn.innerHTML = '⏳';
             btn.disabled = true;
-            var translated = await translateToArabic(original);
+            var translated = await toAr(original);
             if (translated && translated !== original) {
                 el.textContent = translated;
                 el.classList.add('translated');
-                btn.innerHTML = '✅ تمت';
+                btn.innerHTML = '✅';
                 btn.classList.add('done');
-                showToast('✅ تمت ترجمة الوصف');
+                showToast('✅ تمت الترجمة');
             } else {
-                btn.innerHTML = '⚠️ فشل';
-                showToast('⚠️ تعذرت الترجمة');
+                btn.innerHTML = '⚠️';
+                showToast('⚠️ فشل');
             }
             setTimeout(function() {
-                if (btn.classList.contains('done')) {
-                    btn.innerHTML = '🔄 إعادة';
-                } else {
-                    btn.innerHTML = '🌐 ترجمة الوصف';
-                }
+                btn.innerHTML = btn.classList.contains('done') ? '🔄' : '🌐 ترجمة';
                 btn.disabled = false;
             }, 2000);
         };
 
-        // ==================== COPY SCRIPT ====================
-        window._krbCopy = async function(btn, id, source) {
+        // ========== COPY ==========
+        window._krbCopy = async function(btn, id, src) {
             if (btn.disabled) return;
-            var origHTML = btn.innerHTML;
-            btn.innerHTML = '⏳ جاري التحميل...';
+            var orig = btn.innerHTML;
+            btn.innerHTML = '⏳';
             btn.disabled = true;
-
-            var script = null;
-            for (var i = 0; i < S.scripts.length; i++) {
-                if (S.scripts[i].id === id && S.scripts[i].source === source) {
-                    script = S.scripts[i];
-                    break;
-                }
-            }
-
-            if (!script) {
-                btn.innerHTML = origHTML;
-                btn.disabled = false;
-                return;
-            }
-
-            var code = await getCode(script);
+            var sc = S.scripts.find(function(s) { return s.id === id && s.source === src; });
+            if (!sc) { btn.innerHTML = orig; btn.disabled = false; return; }
+            var code = await getCode(sc);
             if (code) {
-                try {
-                    await navigator.clipboard.writeText(code);
-                    btn.innerHTML = '✅ تم النسخ!';
-                    btn.classList.add('copied');
-                    showToast('✅ تم نسخ كود السكربت بنجاح!');
-                } catch (e) {
-                    btn.innerHTML = '❌ فشل النسخ';
-                    showToast('❌ تعذر الوصول للحافظة');
-                }
-            } else {
-                btn.innerHTML = '❌ لم يتم العثور على الكود';
-                showToast('❌ تعذر تحميل كود السكربت');
-            }
-
-            setTimeout(function() {
-                btn.innerHTML = origHTML;
-                btn.classList.remove('copied');
-                btn.disabled = false;
-            }, 2200);
+                try { await navigator.clipboard.writeText(code); btn.innerHTML = '✅ تم النسخ!'; btn.classList.add('copied'); showToast('✅ تم نسخ السكربت!'); }
+                catch (e) { btn.innerHTML = '❌'; showToast('❌ فشل'); }
+            } else { btn.innerHTML = '❌ لا يوجد كود'; showToast('❌ تعذر التحميل'); }
+            setTimeout(function() { btn.innerHTML = orig; btn.classList.remove('copied'); btn.disabled = false; }, 2000);
         };
 
-        // ==================== HELPERS ====================
-        function escHtml(str) {
-            if (!str) return '';
-            var d = document.createElement('div');
-            d.textContent = str;
-            return d.innerHTML;
-        }
+        // ========== HELPERS ==========
+        function escHtml(s) { if (!s) return ''; var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+        function fmtNum(n) { if (!n) return '0'; if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M'; if (n >= 1000) return (n / 1000).toFixed(1) + 'K'; return n.toLocaleString('en'); }
+        function showToast(m) { toastEl.textContent = m; toastEl.style.display = 'block'; toastEl.style.animation = 'none'; toastEl.offsetHeight; toastEl.style.animation = 'toastUp 0.3s ease'; setTimeout(function() { toastEl.style.display = 'none'; }, 2200); }
 
-        function fmtNum(n) {
-            if (!n || n === 0) return '0';
-            if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
-            if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
-            return n.toLocaleString('en');
-        }
-
-        function showToast(msg) {
-            toastEl.textContent = msg;
-            toastEl.style.display = 'block';
-            toastEl.style.animation = 'none';
-            toastEl.offsetHeight;
-            toastEl.style.animation = 'toastUp 0.3s ease';
-            setTimeout(function() {
-                toastEl.style.display = 'none';
-            }, 2300);
-        }
-
-        // ==================== EVENT LISTENERS ====================
-        // Tabs
+        // ========== EVENTS ==========
         document.getElementById('tabs').addEventListener('click', function(e) {
             var tab = e.target.closest('.tab');
             if (!tab) return;
-            var allTabs = document.querySelectorAll('#tabs .tab');
-            for (var i = 0; i < allTabs.length; i++) {
-                allTabs[i].classList.remove('active');
-            }
+            document.querySelectorAll('#tabs .tab').forEach(function(t) { t.classList.remove('active'); });
             tab.classList.add('active');
             S.src = tab.getAttribute('data-src');
-            loadScripts(true);
+            load(true);
         });
 
-        // Filters
         document.getElementById('filtersBar').addEventListener('click', function(e) {
             var btn = e.target.closest('.filter-btn');
             if (!btn) return;
-            var allBtns = document.querySelectorAll('#filtersBar .filter-btn');
-            for (var i = 0; i < allBtns.length; i++) {
-                allBtns[i].classList.remove('active');
-            }
+            document.querySelectorAll('#filtersBar .filter-btn').forEach(function(b) { b.classList.remove('active'); });
             btn.classList.add('active');
             S.f = btn.getAttribute('data-f');
-            loadScripts(true);
+            load(true);
         });
 
-        // Sort
         document.getElementById('sortSelect').addEventListener('change', function(e) {
             S.sort = e.target.value;
-            loadScripts(true);
+            load(true);
         });
 
-        // Search
         searchInput.addEventListener('input', function(e) {
             clearTimeout(S.timer);
             S.timer = setTimeout(async function() {
                 var raw = e.target.value.trim();
                 S.qRaw = raw;
-                if (raw) {
-                    S.qEn = await translateToEnglish(raw);
-                } else {
-                    S.qEn = '';
-                }
-                loadScripts(true);
+                S.qEn = raw ? await toEn(raw) : '';
+                load(true);
             }, 600);
         });
 
-        // Load more
-        btnMore.addEventListener('click', function() {
-            loadMore();
-        });
+        btnMore.addEventListener('click', function() { loadMore(); });
 
-        // ==================== INIT ====================
-        loadScripts(true);
+        // ========== INIT ==========
+        load(true);
     })();
     </script>
 </body>
