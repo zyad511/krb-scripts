@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KRB - مركز السكربتات | KSA Scripts Hub</title>
-    <meta name="description" content="KRB - ابحث وانسخ أفضل سكربتات Roblox من Rscripts و ScriptBlox مع ترجمة فورية">
+    <meta name="description" content="KRB - ابحث وانسخ أفضل سكربتات Roblox من Rscripts و ScriptBlox">
     <meta name="theme-color" content="#0a0a0f">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0f'/><text x='50' y='68' text-anchor='middle' font-size='50' font-weight='900' fill='%238b5cf6' font-family='Arial'>K</text></svg>">
 
@@ -78,9 +78,15 @@
             letter-spacing: 2px;
             white-space: nowrap;
         }
-        .logo-k { color: #fff; }
-        .logo-r { color: var(--accent2); }
-        .logo-b { color: var(--gold); }
+        .logo-k {
+            color: #fff;
+        }
+        .logo-r {
+            color: var(--accent2);
+        }
+        .logo-b {
+            color: var(--gold);
+        }
         .logo-sub {
             font-size: 0.55rem;
             color: var(--sub);
@@ -166,7 +172,7 @@
             font-size: 0.88rem;
         }
 
-        /* ==================== FILTERS ==================== */
+        /* ==================== FILTERS BAR ==================== */
         .filters-bar {
             display: flex;
             flex-wrap: wrap;
@@ -654,9 +660,14 @@
 
         <!-- Grid -->
         <div class="grid" id="grid">
-            <div class="skel"></div><div class="skel"></div><div class="skel"></div>
-            <div class="skel"></div><div class="skel"></div><div class="skel"></div>
-            <div class="skel"></div><div class="skel"></div>
+            <div class="skel"></div>
+            <div class="skel"></div>
+            <div class="skel"></div>
+            <div class="skel"></div>
+            <div class="skel"></div>
+            <div class="skel"></div>
+            <div class="skel"></div>
+            <div class="skel"></div>
         </div>
 
         <!-- Load More -->
@@ -681,7 +692,7 @@
     <script>
     (function() {
         // ==================== STATE ====================
-        const S = {
+        var S = {
             src: 'all',
             f: 'all',
             sort: 'default',
@@ -697,74 +708,92 @@
         };
 
         // ==================== DOM ====================
-        const grid = document.getElementById('grid');
-        const searchInput = document.getElementById('searchInput');
-        const statsEl = document.getElementById('stats');
-        const btnMore = document.getElementById('btnMore');
-        const toastEl = document.getElementById('toast');
+        var grid = document.getElementById('grid');
+        var searchInput = document.getElementById('searchInput');
+        var statsEl = document.getElementById('stats');
+        var btnMore = document.getElementById('btnMore');
+        var toastEl = document.getElementById('toast');
 
         // ==================== TRANSLATE CACHE ====================
-        const trCache = {};
+        var trCache = {};
 
-        // ==================== TRANSLATE ANY LANGUAGE TO ENGLISH ====================
+        // ==================== TRANSLATE TO ENGLISH ====================
         async function translateToEnglish(text) {
             if (!text || text.length === 0) return '';
-            // If already plain English, return as is
+            // If already English
             if (/^[a-zA-Z0-9\s.,!?\-+=\[\]{}'"<>:;@#$%^&*()_/\\]+$/.test(text) && !/[^\x00-\x7F]/.test(text)) {
                 return text;
             }
-            const cacheKey = 'toen_' + text.substring(0, 80);
+            var cacheKey = 'toen_' + text.substring(0, 80);
             if (trCache[cacheKey]) return trCache[cacheKey];
             try {
-                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=${encodeURIComponent(text)}`;
-                const res = await fetch(url);
+                var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=' + encodeURIComponent(text);
+                var res = await fetch(url);
                 if (!res.ok) throw new Error('Translate failed');
-                const data = await res.json();
-                let translated = data?.[0]?.map(part => part[0]).join('') || text;
-                if (translated && translated !== text) {
+                var data = await res.json();
+                var translated = '';
+                if (data && data[0]) {
+                    for (var i = 0; i < data[0].length; i++) {
+                        translated += data[0][i][0];
+                    }
+                }
+                if (!translated) translated = text;
+                if (translated !== text) {
                     trCache[cacheKey] = translated;
                 }
                 return translated;
             } catch (e) {
-                console.error('Translation error:', e);
                 return text;
             }
         }
 
-        // ==================== TRANSLATE TEXT TO ARABIC ====================
+        // ==================== TRANSLATE TO ARABIC ====================
         async function translateToArabic(text) {
             if (!text || text.length < 3) return text;
-            const cacheKey = 'toar_' + text.substring(0, 70);
+            var cacheKey = 'toar_' + text.substring(0, 70);
             if (trCache[cacheKey]) return trCache[cacheKey];
             try {
-                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ar&dt=t&q=${encodeURIComponent(text)}`;
-                const res = await fetch(url);
+                var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ar&dt=t&q=' + encodeURIComponent(text);
+                var res = await fetch(url);
                 if (!res.ok) throw new Error('Translate failed');
-                const data = await res.json();
-                let translated = data?.[0]?.map(part => part[0]).join('') || text;
-                if (translated && translated !== text) {
+                var data = await res.json();
+                var translated = '';
+                if (data && data[0]) {
+                    for (var i = 0; i < data[0].length; i++) {
+                        translated += data[0][i][0];
+                    }
+                }
+                if (!translated) translated = text;
+                if (translated !== text) {
                     trCache[cacheKey] = translated;
                 }
                 return translated;
             } catch (e) {
-                console.error('Translation error:', e);
                 return text;
             }
         }
 
-        // ==================== URL BUILDERS ====================
-        function buildRscriptsURL(isTrending) {
-            if (isTrending && !S.qEn) {
+        // ==================== BUILD RSCRIPTS URL ====================
+        function buildRscriptsURL() {
+            // If trending and no search
+            if (!S.qEn && S.sort === 'default') {
                 return 'https://rscripts.net/api/v2/trending';
             }
-            const params = new URLSearchParams();
+            var params = new URLSearchParams();
             params.set('page', S.pR.toString());
             params.set('sort', 'desc');
-            if (S.sort === 'newest') params.set('orderBy', 'date');
-            else if (S.sort === 'views') params.set('orderBy', 'views');
-            else if (S.sort === 'likes') params.set('orderBy', 'likes');
-            else params.set('orderBy', 'date');
-            if (S.qEn) params.set('q', S.qEn);
+            if (S.sort === 'newest') {
+                params.set('orderBy', 'date');
+            } else if (S.sort === 'views') {
+                params.set('orderBy', 'views');
+            } else if (S.sort === 'likes') {
+                params.set('orderBy', 'likes');
+            } else {
+                params.set('orderBy', 'date');
+            }
+            if (S.qEn) {
+                params.set('q', S.qEn);
+            }
             if (S.f === 'nokey') params.set('noKeySystem', 'true');
             if (S.f === 'mobile') params.set('mobileOnly', 'true');
             if (S.f === 'free') params.set('notPaid', 'true');
@@ -773,15 +802,19 @@
             return 'https://rscripts.net/api/v2/scripts?' + params.toString();
         }
 
-        function buildBloxscriptURL(isTrending) {
-            if (isTrending && !S.qEn) {
+        // ==================== BUILD BLOXSCRIPT URL ====================
+        function buildBloxscriptURL() {
+            // If trending and no search
+            if (!S.qEn && S.sort === 'default') {
                 return 'https://scriptblox.com/api/script/trending';
             }
-            const endpoint = S.qEn ? '/script/search' : '/script/fetch';
-            const params = new URLSearchParams();
+            var endpoint = S.qEn ? '/script/search' : '/script/fetch';
+            var params = new URLSearchParams();
             params.set('page', S.pB.toString());
             params.set('max', '40');
-            if (S.qEn) params.set('q', S.qEn);
+            if (S.qEn) {
+                params.set('q', S.qEn);
+            }
             if (S.sort === 'newest') {
                 params.set('sortBy', 'createdAt');
                 params.set('order', 'desc');
@@ -800,31 +833,31 @@
             return 'https://scriptblox.com/api' + endpoint + '?' + params.toString();
         }
 
-        // ==================== NORMALIZE RSCRIPTS ====================
+        // ==================== NORMALIZE RSCRIPT ====================
         function normalizeRscript(raw) {
-            // Handle trending response structure
-            let s = raw;
+            var s = raw;
+            // Trending response has different structure
             if (raw.script) {
-                s = { ...raw.script, views: raw.views || raw.script.views, user: raw.user };
+                s = raw.script;
+                s.views = raw.views || raw.script.views;
+                s.user = raw.user;
             }
-
-            const hasUser = s.user && typeof s.user === 'object' && Object.keys(s.user).length > 0;
-            const title = s.title || (s.script && s.script.title) || 'بدون عنوان';
-            const description = (s.description || (s.script && s.script.description) || '').trim();
-            const image = s.image || (s.script && s.script.image) || (s.game && s.game.imgurl) || '';
-            const dev = hasUser ? (s.user.username || '') : (s.creator || 'مجهول');
-            const devImg = hasUser ? (s.user.image || '') : '';
-            const devVerified = hasUser ? (s.user.verified || false) : false;
-            const views = s.views || (s.script && s.script.views) || 0;
-            const likes = s.likes || (s.script && s.script.likes) || 0;
-            const dislikes = s.dislikes || 0;
-            const hasKey = s.keySystem || false;
-            const isPaid = s.paid || false;
-            const isMobile = s.mobileReady || false;
-            const gameName = (s.game && s.game.title) || '';
-            const gameId = (s.game && s.game.placeId) || null;
-            const gameLink = (s.game && s.game.gameLink) || (gameId ? 'https://www.roblox.com/games/' + gameId : '');
-            const codeUrl = s.rawScript || null;
+            var hasUser = s.user && typeof s.user === 'object' && Object.keys(s.user).length > 0;
+            var title = s.title || 'بدون عنوان';
+            var description = (s.description || '').trim();
+            var image = s.image || (s.game && s.game.imgurl) || '';
+            var dev = hasUser ? (s.user.username || '') : (s.creator || 'مجهول');
+            var devImg = hasUser ? (s.user.image || '') : '';
+            var devVerified = hasUser ? (s.user.verified || false) : false;
+            var views = s.views || 0;
+            var likes = s.likes || 0;
+            var hasKey = s.keySystem || false;
+            var isPaid = s.paid || false;
+            var isMobile = s.mobileReady || false;
+            var gameName = (s.game && s.game.title) || '';
+            var gameId = (s.game && s.game.placeId) || null;
+            var gameLink = (s.game && s.game.gameLink) || (gameId ? 'https://www.roblox.com/games/' + gameId : '');
+            var codeUrl = s.rawScript || null;
 
             return {
                 id: s._id || s.id || '',
@@ -836,7 +869,7 @@
                 devV: devVerified,
                 views: views,
                 likes: likes,
-                dislikes: dislikes,
+                dislikes: s.dislikes || 0,
                 key: hasKey,
                 paid: isPaid,
                 mobile: isMobile,
@@ -852,7 +885,7 @@
 
         // ==================== NORMALIZE BLOXSCRIPT ====================
         function normalizeBloxscript(s) {
-            const owner = s.owner || {};
+            var owner = s.owner || {};
             return {
                 id: s._id || '',
                 title: s.title || 'بدون عنوان',
@@ -877,108 +910,114 @@
         }
 
         // ==================== FETCH RSCRIPTS ====================
-        async function fetchRscripts(isTrending) {
+        async function fetchRscripts() {
             try {
-                const url = buildRscriptsURL(isTrending);
-                const res = await fetch(url);
+                var url = buildRscriptsURL();
+                var res = await fetch(url);
                 if (!res.ok) throw new Error('Rscripts status: ' + res.status);
-                const data = await res.json();
+                var data = await res.json();
+                var scripts = [];
 
-                let scripts = [];
-                if (isTrending && !S.qEn) {
-                    // Trending endpoint
+                if (!S.qEn && S.sort === 'default') {
+                    // Trending
                     if (data.success && Array.isArray(data.success)) {
                         scripts = data.success;
-                    } else if (Array.isArray(data)) {
-                        scripts = data;
                     }
                 } else {
-                    // Scripts list endpoint
+                    // Scripts list
                     if (data.scripts && Array.isArray(data.scripts)) {
                         scripts = data.scripts;
                     }
                 }
 
-                // Update pagination
-                const currentPage = data.info?.currentPage || S.pR;
-                const maxPages = data.info?.maxPages || 1;
+                var currentPage = (data.info && data.info.currentPage) || S.pR;
+                var maxPages = (data.info && data.info.maxPages) || 1;
                 S.mR = currentPage < maxPages;
 
-                return scripts.map(s => normalizeRscript(s));
+                var result = [];
+                for (var i = 0; i < scripts.length; i++) {
+                    result.push(normalizeRscript(scripts[i]));
+                }
+                return result;
             } catch (e) {
-                console.error('Rscripts fetch error:', e.message);
+                console.error('Rscripts fetch error:', e);
                 return [];
             }
         }
 
         // ==================== FETCH BLOXSCRIPT ====================
-        async function fetchBloxscript(isTrending) {
+        async function fetchBloxscript() {
             try {
-                const url = buildBloxscriptURL(isTrending);
-                const res = await fetch(url);
+                var url = buildBloxscriptURL();
+                console.log('Bloxscript URL:', url);
+                var res = await fetch(url);
                 if (!res.ok) throw new Error('Bloxscript status: ' + res.status);
-                const data = await res.json();
+                var data = await res.json();
+                console.log('Bloxscript response:', data);
 
-                const scripts = data.result?.scripts || [];
-                const totalPages = data.result?.totalPages || 1;
+                var scripts = [];
+                if (data.result && data.result.scripts) {
+                    scripts = data.result.scripts;
+                } else if (data.scripts) {
+                    scripts = data.scripts;
+                }
+
+                var totalPages = (data.result && data.result.totalPages) || 1;
                 S.mB = S.pB < totalPages;
 
-                return scripts.map(s => normalizeBloxscript(s));
+                console.log('Bloxscript loaded:', scripts.length, 'scripts');
+                var result = [];
+                for (var i = 0; i < scripts.length; i++) {
+                    result.push(normalizeBloxscript(scripts[i]));
+                }
+                return result;
             } catch (e) {
-                console.error('Bloxscript fetch error:', e.message);
+                console.error('Bloxscript fetch error:', e);
                 return [];
             }
         }
 
         // ==================== GET SCRIPT CODE ====================
-        const codeCache = {};
+        var codeCache = {};
         async function getCode(script) {
-            const cacheKey = script.source + '_' + script.id;
+            var cacheKey = script.source + '_' + script.id;
             if (codeCache[cacheKey]) return codeCache[cacheKey];
 
-            // If code is already in the script object
             if (script.code) {
                 codeCache[cacheKey] = script.code;
                 return script.code;
             }
 
-            // Rscripts: fetch from rawScript URL
             if (script.source === 'rscripts' && script.codeUrl) {
                 try {
-                    const res = await fetch(script.codeUrl);
+                    var res = await fetch(script.codeUrl);
                     if (res.ok) {
-                        const text = await res.text();
+                        var text = await res.text();
                         codeCache[cacheKey] = text;
                         return text;
                     }
-                } catch (e) {
-                    // Try CORS proxy
-                    try {
-                        const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(script.codeUrl);
-                        const res = await fetch(proxyUrl);
-                        if (res.ok) {
-                            const text = await res.text();
-                            codeCache[cacheKey] = text;
-                            return text;
-                        }
-                    } catch (e2) {
-                        console.error('CORS proxy failed:', e2);
+                } catch (e) {}
+                // Try CORS proxy
+                try {
+                    var proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(script.codeUrl);
+                    var res2 = await fetch(proxyUrl);
+                    if (res2.ok) {
+                        var text2 = await res2.text();
+                        codeCache[cacheKey] = text2;
+                        return text2;
                     }
-                }
+                } catch (e2) {}
             }
 
-            // Bloxscript: fetch from raw endpoint
             if (script.source === 'bloxscript') {
                 try {
-                    const res = await fetch('https://scriptblox.com/api/script/raw/' + script.id);
-                    if (res.ok) {
-                        const text = await res.text();
-                        codeCache[cacheKey] = text;
-                        return text;
+                    var res3 = await fetch('https://scriptblox.com/api/script/raw/' + script.id);
+                    if (res3.ok) {
+                        var text3 = await res3.text();
+                        codeCache[cacheKey] = text3;
+                        return text3;
                     }
-                } catch (e) {
-                    console.error('Bloxscript raw fetch failed:', e);
-                }
+                } catch (e3) {}
             }
 
             return null;
@@ -1028,34 +1067,46 @@
             }
 
             btnMore.disabled = true;
-            var isTrending = S.sort === 'default' && !S.qEn;
             var allScripts = [];
 
-            // Fetch from selected sources
+            // Fetch from Rscripts
             if (S.src === 'all' || S.src === 'rscripts') {
-                var rscripts = await fetchRscripts(isTrending);
-                allScripts = allScripts.concat(rscripts);
+                var rscripts = await fetchRscripts();
+                console.log('Rscripts loaded:', rscripts.length);
+                for (var j = 0; j < rscripts.length; j++) {
+                    allScripts.push(rscripts[j]);
+                }
             }
+
+            // Fetch from Bloxscript
             if (S.src === 'all' || S.src === 'bloxscript') {
-                var bloxscripts = await fetchBloxscript(isTrending);
-                allScripts = allScripts.concat(bloxscripts);
+                var bloxscripts = await fetchBloxscript();
+                console.log('Bloxscript loaded:', bloxscripts.length);
+                for (var k = 0; k < bloxscripts.length; k++) {
+                    allScripts.push(bloxscripts[k]);
+                }
             }
 
-            // Apply local filter
-            allScripts = applyLocalFilter(allScripts);
+            console.log('Total before filter:', allScripts.length);
 
-            // Sort locally if needed
+            // Apply filter
+            allScripts = applyLocalFilter(allScripts);
+            console.log('Total after filter:', allScripts.length);
+
+            // Sort locally
             if (S.sort === 'views') {
                 allScripts.sort(function(a, b) { return b.views - a.views; });
             } else if (S.sort === 'likes') {
                 allScripts.sort(function(a, b) { return b.likes - a.likes; });
             }
 
-            // Merge with existing scripts
+            // Merge with existing
             if (reset) {
                 S.scripts = allScripts;
             } else {
-                S.scripts = S.scripts.concat(allScripts);
+                for (var m = 0; m < allScripts.length; m++) {
+                    S.scripts.push(allScripts[m]);
+                }
             }
 
             // Remove duplicates
@@ -1173,29 +1224,30 @@
                     descHtml = '<div class="card-desc" id="desc-' + uid + '" data-o="' + escHtml(desc) + '">' + escHtml(desc) + '</div>';
                 }
 
-                grid.innerHTML += '<div class="card">' +
-                    '<div class="card-img">' +
-                        imgHtml +
-                        '<div class="card-badges">' + badgesHtml + '</div>' +
-                        '<span class="badge badge-source">' + sourceLabel + '</span>' +
-                    '</div>' +
-                    '<div class="card-body">' +
-                        '<div class="card-title">' + escHtml(s.title) + '</div>' +
-                        descHtml +
-                        translateBtn +
-                        gameHtml +
-                        tagsHtml +
-                        '<div class="card-dev">' +
-                            devImgHtml +
-                            '<span class="dev-name">' + devVerifiedHtml + escHtml(s.dev) + '</span>' +
+                grid.innerHTML +=
+                    '<div class="card">' +
+                        '<div class="card-img">' +
+                            imgHtml +
+                            '<div class="card-badges">' + badgesHtml + '</div>' +
+                            '<span class="badge badge-source">' + sourceLabel + '</span>' +
                         '</div>' +
-                        '<div class="card-stats">' +
-                            '<span class="stat-v">👁️ ' + viewsFormatted + '</span>' +
-                            '<span class="stat-l">❤️ ' + likesFormatted + '</span>' +
+                        '<div class="card-body">' +
+                            '<div class="card-title">' + escHtml(s.title) + '</div>' +
+                            descHtml +
+                            translateBtn +
+                            gameHtml +
+                            tagsHtml +
+                            '<div class="card-dev">' +
+                                devImgHtml +
+                                '<span class="dev-name">' + devVerifiedHtml + escHtml(s.dev) + '</span>' +
+                            '</div>' +
+                            '<div class="card-stats">' +
+                                '<span class="stat-v">👁️ ' + viewsFormatted + '</span>' +
+                                '<span class="stat-l">❤️ ' + likesFormatted + '</span>' +
+                            '</div>' +
+                            '<button class="btn-copy" onclick="window._krbCopy(this,\'' + escHtml(s.id) + '\',\'' + s.source + '\')">📋 نسخ السكربت</button>' +
                         '</div>' +
-                        '<button class="btn-copy" onclick="window._krbCopy(this,\'' + escHtml(s.id) + '\',\'' + s.source + '\')">📋 نسخ السكربت</button>' +
-                    '</div>' +
-                '</div>';
+                    '</div>';
             }
         }
 
