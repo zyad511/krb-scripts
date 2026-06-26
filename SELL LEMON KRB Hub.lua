@@ -147,8 +147,8 @@ VersionLbl.Position   = UDim2.new(0, 18, 0.55, 0)
 VersionLbl.Size       = UDim2.new(0, 170, 0, 12)
 VersionLbl.Font       = Enum.Font.Gotham
 VersionLbl.Text       = "Anti-AFK ✓"
-VersionLbl.TextColor3 = Color3.fromRGB(120, 180, 220)
-VersionLbl.TextSize   = 10
+VersionLbl.TextColor3 = Color3.fromRGB(120, 200, 220)
+VersionLbl.TextSize   = 8
 VersionLbl.TextXAlignment = Enum.TextXAlignment.Left
 VersionLbl.ZIndex     = 6
 
