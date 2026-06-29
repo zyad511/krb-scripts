@@ -1,6 +1,6 @@
 -- ================================================
 --           KRB PREMIUM - FINAL EDITION
---        غوجو + أوتوفارم + أنتي AFK كامل
+--   غوجو + أوتوفارم + أنتي AFK + أوتو ريبيرث V5
 -- ================================================
 local TweenService     = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
@@ -318,7 +318,7 @@ end
 -- ================================================
 --          🌾 صفحة الزراعة - AutoFarm
 -- ================================================
-local AutoBuy, AutoUpgrade, AutoFruit = false, false, false
+local AutoBuy, AutoUpgrade, AutoFruit, AutoRebirth = false, false, false, false
 local Buying = false
 
 -- إيجاد الـ Tycoon
@@ -426,6 +426,88 @@ task.spawn(function()
     end
 end)
 
+-- [ دالات الـ Auto Rebirth الخلفية المدمجة V5 ]
+local function getActualRebirthRemote(tycoon)
+    if not tycoon then return nil end
+    local remotesFolder = tycoon:FindFirstChild("Remotes")
+    if remotesFolder then
+        local remote = remotesFolder:FindFirstChild("Rebirth")
+        if remote and (remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction")) then
+            return remote
+        end
+    end
+    for _, object in ipairs(tycoon:GetDescendants()) do
+        if object.Name == "Rebirth" and (object:IsA("RemoteEvent") or object:IsA("RemoteFunction")) then
+            return object
+        end
+    end
+    return nil
+end
+
+local function autoClickRebirthUI()
+    pcall(function()
+        for _, element in ipairs(LocalPlayer.PlayerGui:GetDescendants()) do
+            if element:IsA("TextButton") and (element.Text == "REBIRTH" or element.Text:lower():find("rebirth")) then
+                if element.Visible and element.Parent.Visible then
+                    if firesignal then
+                        firesignal(element.MouseButton1Click)
+                        firesignal(element.MouseButton1Down)
+                    end
+                end
+            end
+        end
+    end)
+end
+
+task.spawn(function()
+    while task.wait(1) do
+        if AutoRebirth then
+            autoClickRebirthUI()
+            pcall(function()
+                local character = LocalPlayer.Character
+                local rootPart = character and character:FindFirstChild("HumanoidRootPart")
+                
+                for i = 1, 10 do
+                    local tycoonName = "Tycoon" .. tostring(i)
+                    local tycoon = workspace:FindFirstChild(tycoonName)
+                    
+                    if tycoon then
+                        local rebirthRemote = getActualRebirthRemote(tycoon)
+                        if rebirthRemote then
+                            task.spawn(function()
+                                pcall(function()
+                                    if rebirthRemote:IsA("RemoteFunction") then
+                                        task.spawn(function() rebirthRemote:InvokeServer("Normal") end)
+                                        task.spawn(function() rebirthRemote:InvokeServer() end)
+                                    elseif rebirthRemote:IsA("RemoteEvent") then
+                                        rebirthRemote:FireServer("Normal")
+                                        rebirthRemote:FireServer()
+                                    end
+                                end)
+                            end)
+                        end
+                        
+                        if rootPart and tycoon:FindFirstChild("Rebirth") then
+                            local rebirthFolder = tycoon.Rebirth
+                            if rebirthFolder:IsA("Folder") and rebirthFolder:FindFirstChild("Evolution") then
+                                local evolution = rebirthFolder.Evolution
+                                if evolution:FindFirstChild("Portal") and evolution.Portal:FindFirstChild("Root") then
+                                    local portalRoot = evolution.Portal.Root
+                                    if portalRoot and portalRoot:IsA("BasePart") and firetouchinterest then
+                                        firetouchinterest(rootPart, portalRoot, 0)
+                                        task.wait(0.05)
+                                        firetouchinterest(rootPart, portalRoot, 1)
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end)
+        end
+    end
+end)
+
 -- عناصر صفحة الزراعة
 local rBuy  = makeRow(pgFarm, "🛒  شراء تلقائي")
 local tBuy  = makeToggle(rBuy)
@@ -443,6 +525,13 @@ local rFruit = makeRow(pgFarm, "🍋  جمع فاكهة تلقائي")
 local tFruit = makeToggle(rFruit)
 tFruit.MouseButton1Click:Connect(function()
     AutoFruit = not AutoFruit; setToggle(tFruit, AutoFruit)
+end)
+
+-- الزر الجديد المضاف بناءً على طلبك
+local rRebirth = makeRow(pgFarm, "🔄  ريبيرث تلقائي (new)")
+local tRebirth = makeToggle(rRebirth)
+tRebirth.MouseButton1Click:Connect(function()
+    AutoRebirth = not AutoRebirth; setToggle(tRebirth, AutoRebirth)
 end)
 
 -- فاصل
@@ -564,6 +653,7 @@ local function buildCurrentConfig()
         AutoBuy     = AutoBuy,
         AutoUpgrade = AutoUpgrade,
         AutoFruit   = AutoFruit,
+        AutoRebirth = AutoRebirth,
     }
 end
 
@@ -574,6 +664,7 @@ local function applyConfig(d)
     AutoBuy      = d.AutoBuy     or false; setToggle(tBuy,   AutoBuy)
     AutoUpgrade  = d.AutoUpgrade or false; setToggle(tUpg,   AutoUpgrade)
     AutoFruit    = d.AutoFruit   or false; setToggle(tFruit, AutoFruit)
+    AutoRebirth  = d.AutoRebirth or false; setToggle(tRebirth, AutoRebirth)
 end
 
 local function refreshList()
